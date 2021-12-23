@@ -45,14 +45,8 @@ const bool Sphere::intersectRay(Ray r){
     float b = 2*dot(r.getPoint(0) - center, r.getDir());
     float c = (r.getPoint(0) - center).length2() - radius*radius;
 
-    if(a == 1.0f)
-        printf("%f, %f, %f\n", a, b, c);
-
-    if(b*b-4*a*c >= 0){
-        if(a == 1.0f)
-            printf("%f, %f, %f\n", a, b, c);
+    if(b*b-4*a*c >= 0)
         return true;
-    }
     else
         return false;
 

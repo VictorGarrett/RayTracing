@@ -2,6 +2,7 @@
 #include "stb_image_write.h"
 
 #include "primitives.h"
+#include "camera.h"
 
 #define WIDTH   800
 #define HEIGHT  600
@@ -14,25 +15,15 @@ int main(){
     for(int i = 0; i < 3*WIDTH*HEIGHT; i++)
         imagedata[i] = 0;
 
-    //for(int i = 0; i < WIDTH*HEIGHT; i++)
-        //imagedata[3*i] = 255;
-
-
-    float fov = 50;
-    float aspectRatio = (float)WIDTH/HEIGHT;
-
-    vec3f u(0.0f, -2*tanf(fov)/(aspectRatio*HEIGHT), 0.0f);
-    vec3f r(2*tanf(fov)/(WIDTH), 0.0f, 0.0f);
-    vec3f cameraForward(0.0f, 0.0f, 1.0f);
 
     Sphere ball({0.0f, 0.0f, 20.0f}, 2);
 
+    Camera mainCamera({0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}, WIDTH, HEIGHT, 50);
+
     for(int i = 0; i < HEIGHT; i++){
-        printf("%d\n", i);
         for(int j = 0; j < WIDTH; j++){
             
-            Ray ray({0.0f, 0.0f, 0.0f}, cameraForward + (j-WIDTH/2.0f)*r + (i-HEIGHT/2.0f)*u);
-            if(ball.intersectRay(ray)){
+            if(ball.intersectRay(mainCamera.getRay(j, i))){
                 imagedata[3*(j+WIDTH*i)] = 255;
             }
         }

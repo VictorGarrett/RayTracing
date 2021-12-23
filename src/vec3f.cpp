@@ -4,6 +4,10 @@ vec3f::vec3f(){
     
 }
 
+vec3f::vec3f(const vec3f& other):x(other.x), y(other.y), z(other.z){
+
+}
+
 vec3f::vec3f(float x, float y, float z):x(x), y(y), z(z){
     
 }
@@ -53,6 +57,12 @@ const vec3f vec3f::operator/(float scalar) const{
     return vec3f(x/scalar, y/scalar, z/scalar);
 }
 
+void vec3f::operator*=(float scalar){
+    x *= scalar;
+    y *= scalar;
+    z *= scalar;
+}
+
 const vec3f operator+(const vec3f& first, const vec3f& second){
     vec3f sum(first.x+second.x, first.y+second.y, first.z+second.z);
     return sum;
@@ -73,4 +83,8 @@ const vec3f operator/(float scalar, const vec3f& vec){
 
 const float dot(const vec3f& first, const vec3f& second){
     return first.x*second.x + first.y*second.y + first.z*second.z;
+}
+
+const vec3f cross(const vec3f& first, const vec3f& second){
+    return {(first.y*second.z - first.z*second.y), -(first.x*second.z - first.z*second.x), (first.x*second.y - first.y*second.x)};
 }
