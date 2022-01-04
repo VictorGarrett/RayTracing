@@ -11,6 +11,19 @@ Vec4::Vec4(float x, float y, float z, float w){
 
 Vec4::~Vec4(){ }
 
+const Vec4 Vec4::normalize() const {
+    return Vec4(this->x, this->y, this->z, this->w) / this->magnitude();
+}
+
+const float Vec4::magnitude() const {
+    return sqrt(
+        this->x * this->x +
+        this->y * this->y +
+        this->z * this->z +
+        this->w * this->w 
+    );
+}
+
 const bool Vec4::is_point() const { return this->w; }
 
 const bool Vec4::is_vector() const { return !this->w; }
