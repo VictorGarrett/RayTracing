@@ -12,7 +12,9 @@ class Primitive{
         
         void move(vec3f delta);
 
-        virtual const bool intersectRay(Ray r) = 0;
+        virtual const vec3f intersectRay(Ray r) = 0;
+
+        const vec3f getCenter() const;
 
 };
 
@@ -25,7 +27,7 @@ class Plane: public Primitive{
         Plane(point center = {0.0f, 0.0f, 0.0f}, vec3f normal = {0.0f, 0.0f, 0.0f});
         virtual ~Plane();
 
-        virtual const bool intersectRay(Ray r) override;
+        virtual const vec3f intersectRay(Ray r) override;
 
 };
 
@@ -38,6 +40,8 @@ class Sphere: public Primitive{
         Sphere(point center = {0.0f, 0.0f, 0.0f}, float radius = 0.0f);
         virtual ~Sphere();
 
-        virtual const bool intersectRay(Ray r) override;
+        virtual const vec3f intersectRay(Ray r) override;
+
+        const vec3f getNormal(point surfacePoint) const;
 
 };

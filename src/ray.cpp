@@ -3,6 +3,7 @@
 Ray::Ray(point p, vec3f dir){
     this->p = p;
     this->dir = dir;
+    this->dir.normalize();
 }
 
 Ray::~Ray(){

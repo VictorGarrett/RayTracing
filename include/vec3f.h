@@ -27,6 +27,14 @@ class vec3f{
 
 };
 
+inline bool operator==(const vec3f& first, const vec3f& second) {
+    return first.x == second.x && first.y == second.y && first.z == second.z;
+}
+
+inline bool operator!=(const vec3f& first, const vec3f& second) {
+    return first.x != second.x || first.y != second.y || first.z != second.z; 
+}
+
 const vec3f operator+(const vec3f& first, const vec3f& second);
 
 const vec3f operator-(const vec3f& first, const vec3f& second);

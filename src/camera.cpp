@@ -1,4 +1,5 @@
 #include "camera.h"
+#include <stdio.h>
 
 Camera::Camera(vec3f position, vec3f forward, vec3f upHint, int targetWidth, int targetHeight, float fov):
 position(position),
@@ -10,13 +11,14 @@ forward(forward)
 
     forward.normalize();
 
-    horizontalDisp = cross(forward, upHint);
+    horizontalDisp = cross(upHint, forward);
     horizontalDisp.normalize();
 
-    verticalDisp = cross(horizontalDisp, forward);
+    verticalDisp = cross(forward, horizontalDisp);
 
     horizontalDisp *= 2*tanf(fov)/(targetWidth);
     verticalDisp *= 2*tanf(fov)/(targetWidth);
+
     
 }
 
