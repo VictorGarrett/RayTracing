@@ -1,5 +1,7 @@
-#include "vec4.h"
 #include "canvas.h"
+#include "sphere.h"
+#include "intersection.h"
+#include "mat.h"
 
 // display and other stuff
 void displayVec(const Vec4& v) {
@@ -18,52 +20,38 @@ void displayCanvas(const Canvas& c) {
     }
 }
 
-class Projectile {
-public:
-    Vec4 position;
-    Vec4 velocity;
-
-    Projectile(const Vec4& pos, const Vec4& vel){
-        this->position = pos;
-        this->velocity = vel;
-    }
-};
-
-class Environment {
-public:
-    Vec4 gravity;
-    Vec4 wind;
-
-    Environment(const Vec4& grav, const Vec4& win){
-        this->gravity = grav;
-        this->wind = win;
-    }
-};
-
-Projectile tick(Projectile& p, Environment& e){
-    Vec4 position = p.position + p.velocity;
-    Vec4 velocity = p.velocity + e.gravity + e.wind;
-    return Projectile(position, velocity);
+void displayIntersections(std::list<Intersection* > list){
+    for(auto const& intersection : list)
+        std::cout << intersection->t << '\n';
 }
 
-
 int main() {
-    Vec4 start = point(0, 1, 0);
-    Vec4 velocity = vector(1, 1.8, 0).normalize() * 11.25;
-    Projectile p = Projectile(start, velocity);
+    float A[4][4] = {
+        {9,3,0,9},
+        {-5,-2,-6,-3},
+        {-4,9,6,4},
+        {-7,6,6,2}
+    };
 
-    Vec4 gravity = vector(0, -0.1, 0);
-    Vec4 wind = vector(-0.01, 0, 0);
-    Environment e = Environment(gravity, wind);
+    float B[4][4] = {
+        {8,2,2,2},
+        {3,-1,7,0},
+        {7, 0,5,4},
+        {6,-2,0,2}
+    };
 
-    Canvas c = Canvas(900, 550);
+    float **C = multiply4x4(A, B);
 
-    while (p.position.x < 900 &&  p.position.y >= 0) {
-        c.write_pixel(p.position.x, p.position.y, Color(1, 0, 0));
-        p = tick(p, e);
-    }
-    canvas_to_ppm(c);
+    float **invB = inverse(B);
 
+    // display_mat(C, 4);
+    // std::cout << std::endl;
+    // display_mat(invB, 4);
+
+    // std::cout << std::endl;
+
+    float **nA = multiply4x4(C, invB);
+    display_mat(nA, 4);
     return 0;
 }
 
