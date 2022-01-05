@@ -26,13 +26,17 @@ Plane::~Plane(){
 
 }
 
-const vec3f Plane::intersectRay(Ray r){
+const vec3f Plane::intersectRay(Ray r) const{
     if(dot(r.getDir(), normal)){
         float t = dot(center - r.getPoint(0), normal)/dot(r.getDir(), normal);
         return r.getPoint(t);
     }
     else
         return {0.0f, 0.0f, 0.0f};
+}
+
+const vec3f Plane::getNormal(point surfacePoint) const{
+    return normal;
 }
 
 
@@ -44,7 +48,7 @@ Sphere::~Sphere(){
 
 }
 
-const vec3f Sphere::intersectRay(Ray r){
+const vec3f Sphere::intersectRay(Ray r) const{
     //float a = r.getDir().length2(); =1
     float b = 2*dot(r.getPoint(0) - center, r.getDir());
     float c = (r.getPoint(0) - center).length2() - radius*radius;

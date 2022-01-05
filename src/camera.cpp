@@ -38,6 +38,6 @@ void Camera::setForward(vec3f forward){
     this->forward = forward;
 }
 
-const Ray Camera::getRay(int x, int y){
+const Ray Camera::getRay(int x, int y) const{
     return Ray(position, forward + (x-targetWidth/2.0f)*horizontalDisp + -1*(y-targetHeight/2.0f)*verticalDisp);
 }

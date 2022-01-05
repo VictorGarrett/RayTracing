@@ -22,6 +22,14 @@ class Camera{
         void setPosition(vec3f position);
         void setForward(vec3f forward);
 
-        const Ray getRay(int i, int j);
+        inline int getTargetWidth() const{
+            return targetWidth;
+        }
+
+        inline int getTargetHeight() const{
+            return targetHeight;
+        }
+
+        const Ray getRay(int i, int j) const;
 
 };

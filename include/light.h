@@ -2,17 +2,17 @@
 
 #include "primitives.h"
 
-class LightSource: public Primitive{
+class LightSource{
 
     private:
+        point position;
         color sourceColor;
 
     public:
-        LightSource(vec3f center = {0.0f, 0.0f, 0.0f}, color sourceColor = {0.0f, 0.0f, 0.0f});
+        LightSource(const point& position = {0.0f, 0.0f, 0.0f}, const color& sourceColor = {0.0f, 0.0f, 0.0f});
         ~LightSource();
 
-        const vec3f intersectRay(Ray r) override;
-
+        const point getPosition() const;
         const color getColor() const;
 
 };
