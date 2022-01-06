@@ -1,57 +1,37 @@
 #include "canvas.h"
 #include "sphere.h"
 #include "intersection.h"
-#include "mat.h"
-
-// display and other stuff
-void displayVec(const Vec4& v) {
-    std::cout << '(' << v.x << ", " << v.y << ", " << v.z << ", " << v.w << ')' << '\n';
-}
-
-void displayColor(const Color& c) {
-    std::cout << '(' << c.red << ", " << c.green << ", " << c.blue << ") ";
-}
-
-void displayCanvas(const Canvas& c) {
-    for(unsigned int i = 0; i < c.height; i++) {
-        for(unsigned int j = 0; j < c.width; j++)
-            displayColor(c.grid[i][j]);
-        std::cout << '\n';
-    }
-}
-
-void displayIntersections(std::list<Intersection* > list){
-    for(auto const& intersection : list)
-        std::cout << intersection->t << '\n';
-}
+#include "transformations.h"
 
 int main() {
-    float A[4][4] = {
-        {9,3,0,9},
-        {-5,-2,-6,-3},
-        {-4,9,6,4},
-        {-7,6,6,2}
-    };
+    Vec4 ray_origin = point(0, 0, -5);
+    float wall_z = 10.0;
+    float wall_size = 7.0;
+    int canvas_pixels = 100;
+    float pixel_size = wall_size / canvas_pixels;
+    float half = wall_size / 2;
 
-    float B[4][4] = {
-        {8,2,2,2},
-        {3,-1,7,0},
-        {7, 0,5,4},
-        {6,-2,0,2}
-    };
+    Canvas c = Canvas(canvas_pixels, canvas_pixels);
+    Color color = Color(1,0,0);
+    Sphere *shape = new Sphere();
+    for(int y = 0; y < canvas_pixels; y++){
+        float world_y = half - pixel_size * y;
+        for(int x = 0; x < canvas_pixels; x++) {
+            float world_x = -half + pixel_size * x;
+            Vec4 position = point(world_x, world_y, wall_z);
 
-    float **C = multiply4x4(A, B);
+            Ray *r = new Ray(ray_origin, (position - ray_origin).normalize());
 
-    float **invB = inverse(B);
+            std::list<Intersection* > xs = shape->intersect(r);
 
-    // display_mat(C, 4);
-    // std::cout << std::endl;
-    // display_mat(invB, 4);
+            if(hit(xs)){
+                c.write_pixel(x, y, color);
+            }
 
-    // std::cout << std::endl;
+        }
+    }
 
-    float **nA = multiply4x4(C, invB);
-    display_mat(nA, 4);
+    canvas_to_ppm(c);
     return 0;
 }
 

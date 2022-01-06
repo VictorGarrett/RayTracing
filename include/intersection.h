@@ -1,5 +1,7 @@
 #pragma once
-#include "shape.h"
+#include <list>
+
+class Shape;
 
 class Intersection {
 public:
@@ -10,3 +12,5 @@ public:
     Intersection(const float t, Shape* obj);
     ~Intersection();
 };
+
+Intersection* hit(std::list<Intersection* > intList);

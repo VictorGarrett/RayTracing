@@ -10,5 +10,5 @@ public:
     Sphere();
     ~Sphere();
 
-    const void intersect(const Ray& r);
+    std::list<Intersection* > intersect(Ray* r);
 };

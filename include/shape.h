@@ -6,10 +6,10 @@ class Intersection;
 
 class Shape {
 public:
-    std::list<Intersection* > intersections;
+    float **transform;
 
     Shape();
     ~Shape();
 
-    const void add_intersection(const float t, Shape* obj);
+    void set_transform(float **m);
 };

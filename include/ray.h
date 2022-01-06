@@ -11,4 +11,6 @@ public:
     ~Ray();
 
     const Vec4 get_position(const float t) const;
+    Ray* transform(float **m);
 };
+

@@ -1,5 +1,10 @@
 #pragma once
 #include "helper.h"
+#define EPSILON 0.00001;
+
+inline const float abs(float n) { return n > 0.f ? n : -n; }
+
+inline const bool eps_equal(float a, float b) { return abs(a-b) < EPSILON; }
 
 // w=1 is a point, w=0 is a vector
 class Vec4 {
@@ -20,10 +25,10 @@ public:
 // overload operators
 inline bool operator==(const Vec4 &v1, const Vec4 &v2){
     return (
-        equal(v1.x, v2.x) &&
-        equal(v1.y, v2.y) &&
-        equal(v1.z, v2.z) &&
-        equal(v1.w, v2.w)
+        eps_equal(v1.x, v2.x) &&
+        eps_equal(v1.y, v2.y) &&
+        eps_equal(v1.z, v2.z) &&
+        eps_equal(v1.w, v2.w)
     );
 }
 
@@ -43,6 +48,32 @@ inline Vec4 operator*(const float s, const Vec4& v) {
 
 inline Vec4 operator*(const Vec4& v, const float s) { 
     return Vec4(s * v.x, s * v.y, s * v.z, v.w);
+}
+
+inline Vec4 operator*(float m[4][4], const Vec4& v) { 
+    float vec[4];
+
+    for(int row = 0; row < 4; row++){
+        vec[row] =  m[row][0] * v.x +
+                    m[row][1] * v.y +
+                    m[row][2] * v.z +
+                    m[row][3] * v.w;
+    }
+
+    return Vec4(vec[0], vec[1], vec[2], vec[3]);
+}
+
+inline Vec4 operator*(float **m, const Vec4& v) { 
+    float vec[4];
+
+    for(int row = 0; row < 4; row++){
+        vec[row] =  m[row][0] * v.x +
+                    m[row][1] * v.y +
+                    m[row][2] * v.z +
+                    m[row][3] * v.w;
+    }
+
+    return Vec4(vec[0], vec[1], vec[2], vec[3]);
 }
 
 inline Vec4 operator/(const Vec4& v, const float s) { 

@@ -1,12 +1,5 @@
 #include "mat.h"
 
-float identity_matrix4x4[4][4] = {
-        {1,0,0,0},
-        {0,1,0,0},
-        {0,0,1,0},
-        {0,0,0,1}
-    };
-
 // ====================================================//
 // Display, Create, Copy
 
@@ -36,10 +29,30 @@ float** create_mat(int n) {
     return m;
 }
 
+float** fill_mat(float **m, float n) {
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 4; j++)
+            m[i][j] = n;
+    }
+
+    return m;
+}
+
 float** copy_mat3x3(float m[3][3]){
     float **mat = create_mat(3);
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
+            mat[i][j] = m[i][j];
+        }
+    }
+
+    return mat;
+}
+
+float** copy_mat4x4(float m[4][4]){
+    float **mat = create_mat(4);
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 4; j++){
             mat[i][j] = m[i][j];
         }
     }
@@ -67,6 +80,23 @@ const bool equal4x4(float m1[4][4], float m2[4][4]) {
     return true;
 }
 
+float** get_idt_4x4(){
+    float **m = create_mat(4);
+
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 4; j++)
+            m[i][j] = i == j ? 1 : 0;
+    }
+
+    return m;
+}
+
+void free_mat4x4(float **m) {
+    for(int i = 0; i < 4; i++)
+        delete [] m[i];
+
+    delete [] m;
+}
 
 // ====================================================//
 // Determinant
@@ -90,7 +120,7 @@ const float determinant3x3(float m[3][3]) {
 const float determinant3x3(float **m) {
     float determinant = 0;
     for(int col = 0; col < 3; col ++)
-        determinant += m[0][col]*cofactor(m, 0, col);
+        determinant += m[0][col]*cofactor3x3(m, 0, col);
 
     return determinant;
 }
@@ -108,7 +138,7 @@ const float determinant4x4(float **m) {
     float determinant = 0;
 
     for(int col = 0; col < 4; col ++)
-        determinant += m[0][col]*cofactor(m, 0, col);
+        determinant += m[0][col]*cofactor4x4(m, 0, col);
 
     return determinant;
 }
@@ -116,22 +146,6 @@ const float determinant4x4(float **m) {
 
 // ====================================================//
 // Submatrix
-
-float** submatrix4x4(float m[4][4], int r, int c) {
-    int skip_row = 0;
-    int skip_col = 0;
-    float **mat = create_mat(3);
-    for(int row = 0; row < 3; row++){
-        if(row == r) skip_row = 1;
-        for(int col = 0; col < 3; col++) {
-            if(col == c && !skip_col) skip_col = 1;
-            mat[row][col] = m[row + skip_row][col + skip_col];
-        }
-        skip_col = 0;
-    }
-
-    return mat;
-}
 
 float** submatrix3x3(float m[3][3], int r, int c) {
     int skip_row = 0;
@@ -166,6 +180,39 @@ float** submatrix3x3(float **m, int r, int c) {
 }
 
 
+float** submatrix4x4(float m[4][4], int r, int c) {
+    int skip_row = 0;
+    int skip_col = 0;
+    float **mat = create_mat(3);
+    for(int row = 0; row < 3; row++){
+        if(row == r) skip_row = 1;
+        for(int col = 0; col < 3; col++) {
+            if(col == c && !skip_col) skip_col = 1;
+            mat[row][col] = m[row + skip_row][col + skip_col];
+        }
+        skip_col = 0;
+    }
+
+    return mat;
+}
+
+float** submatrix4x4(float **m, int r, int c) {
+    int skip_row = 0;
+    int skip_col = 0;
+    float **mat = create_mat(3);
+    for(int row = 0; row < 3; row++){
+        if(row == r) skip_row = 1;
+        for(int col = 0; col < 3; col++) {
+            if(col == c && !skip_col) skip_col = 1;
+            mat[row][col] = m[row + skip_row][col + skip_col];
+        }
+        skip_col = 0;
+    }
+
+    return mat;
+}
+
+
 // ====================================================//
 // Minor
 
@@ -173,11 +220,15 @@ const float minor(float mat[3][3], int r, int c) {
     return determinant2x2(submatrix3x3(mat, r, c));
 }
 
-const float minor(float **mat, int r, int c) {
+const float minor3x3(float **mat, int r, int c) {
     return determinant2x2(submatrix3x3(mat, r, c));
 }
 
 const float minor(float mat[4][4], int r, int c) {
+    return determinant3x3(submatrix4x4(mat, r, c));
+}
+
+const float minor4x4(float **mat, int r, int c) {
     return determinant3x3(submatrix4x4(mat, r, c));
 }
 
@@ -190,8 +241,8 @@ const float cofactor(float mat[3][3], int r, int c){
     return (r+c) % 2 == 0 ? minor_val : -minor_val;
 }
 
-const float cofactor(float **mat, int r, int c){
-    float minor_val = minor(mat, r, c);
+const float cofactor3x3(float **mat, int r, int c){
+    float minor_val = minor3x3(mat, r, c);
     return (r+c) % 2 == 0 ? minor_val : -minor_val;
 }
 
@@ -199,6 +250,12 @@ const float cofactor(float mat[4][4], int r, int c){
     float minor_val = minor(mat, r, c);
     return (r+c) % 2 == 0 ? minor_val : -minor_val;
 }
+
+const float cofactor4x4(float **mat, int r, int c){
+    float minor_val = minor4x4(mat, r, c);
+    return (r+c) % 2 == 0 ? minor_val : -minor_val;
+}
+
 
 
 // ====================================================//
@@ -231,7 +288,7 @@ float** inverse(float **mat){
     float det = determinant4x4(mat);
     for(int row = 0; row < 4; row++) {
         for(int col = 0; col < 4; col++){
-            float c =  cofactor(mat, row, col);
+            float c =  cofactor4x4(mat, row, col);
             inv[col][row] = c / det;
         }
     }
@@ -268,17 +325,4 @@ float** multiply4x4(float **m1, float **m2) {
         }
     }
     return m;
-}
-
-Vec4 multiplyMatVec4(float m[4][4], const Vec4& v) {
-    float vec[4];
-
-    for(int row = 0; row < 4; row++){
-        vec[row] =  m[row][0] * v.x +
-                    m[row][1] * v.y +
-                    m[row][2] * v.z +
-                    m[row][3] * v.w;
-    }
-
-    return Vec4(vec[0], vec[1], vec[2], vec[3]);
 }

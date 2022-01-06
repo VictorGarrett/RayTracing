@@ -1,4 +1,5 @@
 #include "sphere.h"
+#include "mat.h"
 
 Sphere::Sphere():Shape() {
     this->center = point(0, 0, 0);
@@ -6,17 +7,25 @@ Sphere::Sphere():Shape() {
 }
 Sphere::~Sphere() {}
 
-const void Sphere::intersect(const Ray& r) {
-    Vec4 sphere_to_ray = r.origin - this->center;
+std::list<Intersection* > Sphere::intersect(Ray* r) {
+    std::list <Intersection* > intList;
+    
+    Ray *r_transf = r->transform(inverse(this->transform));  
+    Vec4 sphere_to_ray = r_transf->origin - this->center;
 
-    float a = dot(r.direction, r.direction);
-    float b = 2 * dot(r.direction, sphere_to_ray);
+    float a = dot(r_transf->direction, r_transf->direction);
+    float b = 2 * dot(r_transf->direction, sphere_to_ray);
     float c = dot(sphere_to_ray, sphere_to_ray) - 1;
 
     float discriminant = b * b - 4 * a * c;
 
+
     if (discriminant >= 0) {
-        this->add_intersection((-b - sqrt(discriminant)) / (2 * a), this);
-        this->add_intersection((-b + sqrt(discriminant)) / (2 * a), this);
+        float t1 = (-b - sqrt(discriminant)) / (2 * a);
+        float t2 = (-b + sqrt(discriminant)) / (2 * a);
+        intList.push_back(new Intersection(t1, this));
+        intList.push_back(new Intersection(t2, this));
     }
+
+    return intList;
 }
