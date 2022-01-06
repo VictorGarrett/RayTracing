@@ -71,6 +71,18 @@ float** transpose(float mat[4][4]){
     return m;
 }
 
+float** transpose(float **mat) {
+    float **m = create_mat(4);
+
+    for(int row = 0; row < 4; row++) {
+        for(int col = 0; col < 4; col++) {
+            m[row][col] =  mat[col][row];
+        }
+    }
+    return m;
+}
+
+
 const bool equal4x4(float m1[4][4], float m2[4][4]) {
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++)

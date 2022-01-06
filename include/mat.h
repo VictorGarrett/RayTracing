@@ -18,6 +18,8 @@ const bool equal4x4(float m1[4][4], float m2[4][4]);
 
 float** transpose(float mat[4][4]);
 
+float** transpose(float **mat);
+
 float** get_idt_4x4();
 
 void free_mat4x4(float **m);

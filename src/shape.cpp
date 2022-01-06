@@ -18,5 +18,3 @@ void Shape::set_transform(float **m){
     this->transform = m;
 }
 
-
-

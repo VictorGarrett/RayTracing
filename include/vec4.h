@@ -2,8 +2,6 @@
 #include "helper.h"
 #define EPSILON 0.00001;
 
-inline const float abs(float n) { return n > 0.f ? n : -n; }
-
 inline const bool eps_equal(float a, float b) { return abs(a-b) < EPSILON; }
 
 // w=1 is a point, w=0 is a vector
@@ -21,6 +19,8 @@ public:
     const bool is_point() const;
     const bool is_vector() const;
 };
+
+Vec4 reflect(const Vec4& in, const Vec4& normal);
 
 // overload operators
 inline bool operator==(const Vec4 &v1, const Vec4 &v2){

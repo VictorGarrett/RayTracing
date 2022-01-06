@@ -27,3 +27,7 @@ const float Vec4::magnitude() const {
 const bool Vec4::is_point() const { return this->w; }
 
 const bool Vec4::is_vector() const { return !this->w; }
+
+Vec4 reflect(const Vec4& in, const Vec4& normal){
+    return in - normal * 2 * dot(in, normal);
+}

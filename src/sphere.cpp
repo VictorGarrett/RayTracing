@@ -29,3 +29,12 @@ std::list<Intersection* > Sphere::intersect(Ray* r) {
 
     return intList;
 }
+
+Vec4 Sphere::normal_at(const Vec4& p) const {
+    Vec4 object_point = inverse(this->transform) * p;
+    Vec4 object_normal = object_point - point(0,0,0);
+    Vec4 world_normal = transpose(inverse(this->transform)) * object_normal;
+    world_normal.w = 0;
+
+    return world_normal.normalize();
+}
