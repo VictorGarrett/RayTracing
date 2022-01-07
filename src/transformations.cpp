@@ -61,3 +61,26 @@ float** shearing(float xy, float xz, float yx, float yz, float zx, float zy) {
     return shr;
 
 }
+
+float** view_transform(const Vec4& from, const Vec4& to, const Vec4& up) {
+    float **orientation = get_idt_4x4();
+
+    Vec4 forward = (to - from).normalize();
+    Vec4 upn = up.normalize();
+    Vec4 left = cross(forward, upn);
+    Vec4 true_up = cross(left, forward);
+
+    orientation[0][0] = left.x; 
+    orientation[0][1] = left.y; 
+    orientation[0][2] = left.z;
+
+    orientation[1][0] = true_up.x; 
+    orientation[1][1] = true_up.y; 
+    orientation[1][2] = true_up.z;
+
+    orientation[2][0] = -forward.x; 
+    orientation[2][1] = -forward.y; 
+    orientation[2][2] = -forward.z;
+
+    return multiply4x4(orientation, translation(-from.x, -from.y, -from.z));
+}

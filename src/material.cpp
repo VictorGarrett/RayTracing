@@ -2,10 +2,10 @@
 
 Material::Material(){
     this->color = Color(1, 1, 1);
-    this->ambient = 0.1f;
-    this->diffuse = 0.9f;
-    this->specular = 0.9f;
-    this->shininess = 200.0f;
+    this->ambient = AMBIENT;
+    this->diffuse = DIFFUSE;
+    this->specular = SPECULAR;
+    this->shininess = SHININESS;
 }
 
 Material::~Material(){}

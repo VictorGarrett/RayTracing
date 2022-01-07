@@ -40,7 +40,7 @@ const void canvas_to_ppm(const Canvas& c) {
     img << "255\n";
 
     // content
-    for(int i = c.height - 1; i >= 0; i--) {
+    for(int i = 0; i < c.height; i++) {
         for(unsigned int j = 0; j < c.width; j++)
             img << floor(255 * c.grid[i][j].red) << ' ' 
                 << floor(255 * c.grid[i][j].green) << ' ' 

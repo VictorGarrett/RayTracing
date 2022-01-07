@@ -2,14 +2,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <cmath>
 #include "canvas.h"
 #include "intersection.h"
+#include "constants.h"
 #include <list>
+#include <cmath>
 
 class Vec4;
-
-const float PI = 3.14159265359;
 
 // display and other stuff
 const void displayErr(std::string str);

@@ -1,5 +1,4 @@
 #pragma once
-#include "ray.h"
 #include "shape.h"
 
 class Sphere: public Shape {

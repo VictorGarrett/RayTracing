@@ -1,6 +1,5 @@
 #pragma once
 #include "helper.h"
-#define EPSILON 0.00001;
 
 inline const bool eps_equal(float a, float b) { return abs(a-b) < EPSILON; }
 

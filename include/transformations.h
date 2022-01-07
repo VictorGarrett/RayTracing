@@ -13,3 +13,5 @@ float** rotation_y(float r);
 float** rotation_z(float r);
 
 float** shearing(float xy, float xz, float yx, float yz, float zx, float zy);
+
+float** view_transform(const Vec4& from, const Vec4& to, const Vec4& up);

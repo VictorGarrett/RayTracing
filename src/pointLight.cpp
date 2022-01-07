@@ -1,5 +1,8 @@
 #include "pointLight.h"
 #include "material.h"
+#include "world.h"
+#include "computations.h"
+#include "ray.h"
 
 PointLight::PointLight() {}
 
@@ -21,6 +24,7 @@ Color lighting(const Material& material, const PointLight& light, const Vec4& po
     Color diffuse, specular;
     Color black = Color(0, 0, 0);
 
+
     // negative light_dot_normal means the lignt is on the 
     // other side of the surface   
     if( light_dot_normal < 0)
@@ -41,4 +45,26 @@ Color lighting(const Material& material, const PointLight& light, const Vec4& po
     }   
 
     return ambient + diffuse + specular;
+}
+
+Color shade_hit(const World& world, const Computations& comps) {
+    return lighting(
+        comps.object->material,
+        world.light,
+        comps.point,
+        comps.eyev,
+        comps.normalv
+    );
+}
+
+Color color_at(World& world, Ray *r) {
+    std::list <Intersection* > xs = world.intersect(r);
+    
+    // If the ray misses all objects
+    if(xs.size() == 0)
+        return Color(0, 0, 0);
+    
+    Computations comps = Computations(hit(xs), r);
+
+    return shade_hit(world, comps);
 }
