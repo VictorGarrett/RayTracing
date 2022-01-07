@@ -1,6 +1,7 @@
 #pragma once
 
 #include "primitives.h"
+#include "color.h"
 
 class LightSource{
 

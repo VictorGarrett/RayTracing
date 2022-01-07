@@ -2,6 +2,12 @@
 
 #include "ray.h"
 
+enum PrimitiveType{
+    plane,
+    sphere,
+    numberOfTypes
+};
+
 class Primitive{
     protected:
         point center;

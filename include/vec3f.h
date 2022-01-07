@@ -47,4 +47,3 @@ const float dot(const vec3f& first, const vec3f& second);
 const vec3f cross(const vec3f& first, const vec3f& second);
 
 typedef vec3f point;
-typedef vec3f color;

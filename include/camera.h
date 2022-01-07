@@ -30,6 +30,6 @@ class Camera{
             return targetHeight;
         }
 
-        const Ray getRay(int i, int j) const;
+        const Ray getRay(int x, int y) const;
 
 };
