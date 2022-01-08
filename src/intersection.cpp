@@ -8,6 +8,7 @@ Intersection::Intersection(const float t, Shape* obj) {
 }
 
 Intersection::~Intersection() {
+    this->object = nullptr;
 }
 
 // sort

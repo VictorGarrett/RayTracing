@@ -2,7 +2,10 @@
 
 World::World(){}
 
-World::~World(){}
+World::~World(){
+    for(auto const& obj : this->objects)
+        delete obj;
+}
 
 // sort intersect
 struct sortIntersect {

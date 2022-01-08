@@ -21,7 +21,7 @@ Canvas render(Camera& camera, World& world) {
 
 int main() {
     World w = default_world();
-    Camera c = Camera(300, 220, PI/ 3);
+    Camera c = Camera(80, 60, PI/ 3);
     c.transform = view_transform(
         point(0, 1.5, -5),
         point(0, 1, 0),

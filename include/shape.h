@@ -10,7 +10,7 @@ public:
     Material material;
 
     Shape();
-    ~Shape();
+    virtual ~Shape();
 
     void set_transform(float **m);
     virtual std::list<Intersection* > intersect(Ray* r) = 0;

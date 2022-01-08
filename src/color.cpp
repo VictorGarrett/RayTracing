@@ -10,4 +10,5 @@ Color::Color(const float r, const float g, const float b){
     this->blue = b;
 }
 
-Color::~Color() {}
+Color::~Color() {
+}
