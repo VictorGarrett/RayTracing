@@ -9,7 +9,7 @@ Intersection::Intersection(const float t, Shape* obj) {
 }
 
 Intersection::~Intersection() {
-    this->object = nullptr;
+    // this->object = nullptr;
 }
 
 // sort
@@ -26,7 +26,7 @@ Intersection* hit(std::list<Intersection* > intList) {
         if(intersection->t >= 0) {
             return intersection;
         }
-    
+
 
     return nullptr;
 }

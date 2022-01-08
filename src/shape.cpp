@@ -7,6 +7,17 @@ Shape::Shape(){
     for(int i = 0; i < 4; i++){
         this->transform[i] = new float[4];
     }
+
+    this->inverseTransform = new float*[4];
+    for(int i = 0; i < 4; i++){
+        this->transform[i] = new float[4];
+    }
+
+    this->inverseTransposed = new float*[4];
+    for(int i = 0; i < 4; i++){
+        this->transform[i] = new float[4];
+    }
+
     this->transform = get_idt_4x4();
     this->inverseTransform = get_idt_4x4();
     this->inverseTransposed = get_idt_4x4();

@@ -2,7 +2,6 @@
 #include "transformations.h"
 #include "ray.h"
 
-
 class Camera
 {
 public:

@@ -35,4 +35,5 @@ Vec4 Sphere::normal_at(const Vec4& p) const {
     Vec4 world_normal = this->inverseTransposed * object_normal;
     world_normal.w = 0;
     return world_normal.normalize();
+
 }

@@ -7,8 +7,8 @@ Canvas::Canvas(const unsigned int w, const unsigned int h) {
     this->width = w;
     this->height = h;
 
-    this->grid = new Color*[h];
-    for(int i = 0; i < h; i++){
+    this->grid = new Color * [h];
+    for (int i = 0; i < h; i++) {
         this->grid[i] = new Color[w];
     }
 
@@ -16,15 +16,11 @@ Canvas::Canvas(const unsigned int w, const unsigned int h) {
 
 }
 Canvas::~Canvas() {
-    for(int i = 0; i < this->width; i++)
-        delete [] this->grid[i];
-
-    delete [] this->grid;
 }
 
-void Canvas::fill_grid(const Color& c){
-    for(unsigned int i = 0; i < this->height; i++){
-        for(unsigned int j = 0; j < this->width; j++ ){
+void Canvas::fill_grid(const Color& c) {
+    for (unsigned int i = 0; i < this->height; i++) {
+        for (unsigned int j = 0; j < this->width; j++) {
             this->grid[i][j] = c;
         }
     }

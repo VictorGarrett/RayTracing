@@ -4,7 +4,7 @@
 
 class Material;
 class World;
-class Computations; 
+class Computations;
 class Ray;
 
 class PointLight {
@@ -18,8 +18,17 @@ public:
 
 };
 
-Color lighting(const Material& material, const PointLight& light, const Vec4& point, const Vec4& eyev, const Vec4& normalv);
+Color lighting(
+    const Material& material,
+    const PointLight& light,
+    const Vec4& point,
+    const Vec4& eyev,
+    const Vec4& normalv,
+    const bool in_shadow
+);
 
-Color shade_hit(const World& world, const Computations& comps);
+Color shade_hit(World& world, Computations& comps);
 
-Color color_at(World& world, Ray *r);
+const bool is_shadowed(World& world, const Vec4& point);
+
+Color color_at(World& world, Ray* r);

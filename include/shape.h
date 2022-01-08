@@ -6,6 +6,9 @@
 
 class Shape {
 public:
+    /*====================================================================*/
+    /*================================WARNING=============================*/
+    /*====================================================================*/
     // THINGS BROKE IF YOU MESS WITH THE DECLARATION ORDER (DONT ASK ME WHY)
     float **transform;
     Material material;

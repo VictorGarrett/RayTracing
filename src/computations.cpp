@@ -9,8 +9,9 @@ Computations::Computations(Intersection *i, Ray *r) {
     this->normalv = this->object->normal_at(this->point);
     this->inside = dot(normalv, eyev) < 0 ? true : false;
     if(this->inside) this->normalv = -this->normalv;
+    this->over_point = this->point + this->normalv * EPSILON;
 }
 
 Computations::~Computations(){
-    this->object = nullptr;
+    // this->object = nullptr;
 }

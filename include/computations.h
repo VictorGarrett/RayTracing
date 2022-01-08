@@ -7,6 +7,7 @@ public:
     Shape* object;
     float t;
     Vec4 point;
+    Vec4 over_point;
     Vec4 eyev;
     Vec4 normalv;
     bool inside;
