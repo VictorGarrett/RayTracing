@@ -2,7 +2,7 @@
 #include "vec4.h"
 #include "intersection.h"
 
-const void displayErr(std::string str) { 
+const void displayErr(std::string str) {
     std::cerr << str;
     exit(0);
 }
@@ -18,15 +18,15 @@ void displayColor(const Color& c) {
 }
 
 void displayCanvas(const Canvas& c) {
-    for(unsigned int i = 0; i < c.height; i++) {
-        for(unsigned int j = 0; j < c.width; j++)
+    for (unsigned int i = 0; i < c.height; i++) {
+        for (unsigned int j = 0; j < c.width; j++)
             displayColor(c.grid[i][j]);
         std::cout << '\n';
     }
 }
 
-void displayIntersections(std::list<Intersection* > list){
-    for(auto const& intersection : list)
+void displayIntersections(std::list<Intersection* > list) {
+    for (auto const& intersection : list)
         std::cout << intersection->t << '\n';
 }
 
@@ -40,10 +40,10 @@ const void canvas_to_ppm(const Canvas& c) {
     img << "255\n";
 
     // content
-    for(int i = 0; i < c.height; i++) {
-        for(unsigned int j = 0; j < c.width; j++)
-            img << floor(255 * c.grid[i][j].red) << ' ' 
-                << floor(255 * c.grid[i][j].green) << ' ' 
-                << floor(255 * c.grid[i][j].blue) << '\n';
+    for (int i = 0; i < c.height; i++) {
+        for (unsigned int j = 0; j < c.width; j++)
+            img << floor(255 * c.grid[i][j].red) << ' '
+            << floor(255 * c.grid[i][j].green) << ' '
+            << floor(255 * c.grid[i][j].blue) << '\n';
     }
 }

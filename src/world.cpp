@@ -1,5 +1,5 @@
 #include "world.h"
-
+#include "plane.h"
 World::World() {}
 
 World::~World() {
@@ -16,10 +16,11 @@ struct sortIntersect {
 std::list<Intersection* > World::intersect(Ray* r) {
     std::list<Intersection* > intersections;
     for (auto const& obj : this->objects) {
-        std::list<Intersection* > obj_its = obj->intersect(r);
-        for (auto const& obj : obj_its) {
-            intersections.push_back(obj);
-        }
+        // std::list<Intersection* > obj_its = obj->intersect(r);
+        intersections.merge(obj->intersect(r));
+        // for (auto const& iscts : obj_its) {
+        //     intersections.push_back(iscts);
+        // }
     }
 
     intersections.sort(sortIntersect());

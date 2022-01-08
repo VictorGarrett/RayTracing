@@ -1,11 +1,11 @@
 #pragma once 
 #include "color.h"
 
-class Canvas{
-public: 
+class Canvas {
+public:
     unsigned int width;
     unsigned int height;
-    Color **grid;
+    Color** grid;
 
     Canvas();
     Canvas(const unsigned int w, const unsigned int h);

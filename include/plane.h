@@ -1,12 +1,14 @@
 #pragma once
 #include "shape.h"
 
-class Sphere : public Shape {
+class Plane : public Shape {
 public:
+    Vec4 normalv;
 
-    Sphere();
-    virtual ~Sphere();
+    Plane();
+    virtual ~Plane();
 
+    void set_transform(float** m);
     std::list<Intersection* > intersect(Ray* r);
     Vec4 normal_at(const Vec4& p) const;
 };

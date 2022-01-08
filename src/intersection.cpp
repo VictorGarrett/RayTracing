@@ -22,8 +22,8 @@ struct sortIntersect {
 Intersection* hit(std::list<Intersection* > intList) {
 
     intList.sort(sortIntersect());
-    for(auto const& intersection : intList)
-        if(intersection->t >= 0) {
+    for (auto const& intersection : intList)
+        if (intersection->t >= 0) {
             return intersection;
         }
 

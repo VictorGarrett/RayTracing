@@ -12,5 +12,5 @@ public:
 
     Material();
     ~Material();
-    
+
 };

@@ -1,16 +1,15 @@
 #include "sphere.h"
 #include "mat.h"
 
-Sphere::Sphere():Shape() {
-    this->center = point(0, 0, 0);
-    this->radius = 1;
+Sphere::Sphere() :Shape() {
+
 }
 Sphere::~Sphere() {}
 
 std::list<Intersection* > Sphere::intersect(Ray* r) {
     std::list <Intersection* > intList;
-    Ray *r_transf = r->transform(this->inverseTransform);  
-    Vec4 sphere_to_ray = r_transf->origin - this->center;
+    Ray* r_transf = r->transform(this->inverseTransform);
+    Vec4 sphere_to_ray = r_transf->origin - point(0, 0, 0);
 
     float a = dot(r_transf->direction, r_transf->direction);
     float b = 2 * dot(r_transf->direction, sphere_to_ray);
@@ -31,7 +30,7 @@ std::list<Intersection* > Sphere::intersect(Ray* r) {
 
 Vec4 Sphere::normal_at(const Vec4& p) const {
     Vec4 object_point = this->inverseTransform * p;
-    Vec4 object_normal = object_point - point(0,0,0);
+    Vec4 object_normal = object_point - point(0, 0, 0);
     Vec4 world_normal = this->inverseTransposed * object_normal;
     world_normal.w = 0;
     return world_normal.normalize();

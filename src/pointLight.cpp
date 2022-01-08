@@ -56,7 +56,9 @@ Color lighting(
 }
 
 Color shade_hit(World& world, Computations& comps) {
-
+    // moves the point a tiny in direction for avoid an object to
+    // cast a shadow on itself
+    comps.over_point = comps.point + comps.normalv * EPSILON;
     const bool shadowed = is_shadowed(world, comps.over_point);
     return lighting(
         comps.object->material,

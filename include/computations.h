@@ -2,8 +2,8 @@
 #include "sphere.h"
 
 class Computations
-{ 
-public: 
+{
+public:
     Shape* object;
     float t;
     Vec4 point;
@@ -12,7 +12,7 @@ public:
     Vec4 normalv;
     bool inside;
 
-    Computations(Intersection *i, Ray *r);
+    Computations(Intersection* i, Ray* r);
     ~Computations();
 };
 
