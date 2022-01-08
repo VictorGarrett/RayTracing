@@ -1,13 +1,17 @@
 #pragma once
 #include <list>
 #include "vec4.h"
-#include "material.h"
 #include "ray.h"
+#include "material.h"
 
 class Shape {
 public:
+    // THINGS BROKE IF YOU MESS WITH THE DECLARATION ORDER (DONT ASK ME WHY)
     float **transform;
     Material material;
+    float **inverseTransform;
+    float **inverseTransposed;
+    // END OF DANGER ZONE. FROM NOW ON ITS SAFE.
 
     Shape();
     virtual ~Shape();

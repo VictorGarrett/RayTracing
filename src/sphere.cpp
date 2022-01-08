@@ -9,8 +9,7 @@ Sphere::~Sphere() {}
 
 std::list<Intersection* > Sphere::intersect(Ray* r) {
     std::list <Intersection* > intList;
-    
-    Ray *r_transf = r->transform(inverse(this->transform));  
+    Ray *r_transf = r->transform(this->inverseTransform);  
     Vec4 sphere_to_ray = r_transf->origin - this->center;
 
     float a = dot(r_transf->direction, r_transf->direction);
@@ -31,10 +30,9 @@ std::list<Intersection* > Sphere::intersect(Ray* r) {
 }
 
 Vec4 Sphere::normal_at(const Vec4& p) const {
-    Vec4 object_point = inverse(this->transform) * p;
+    Vec4 object_point = this->inverseTransform * p;
     Vec4 object_normal = object_point - point(0,0,0);
-    Vec4 world_normal = transpose(inverse(this->transform)) * object_normal;
+    Vec4 world_normal = this->inverseTransposed * object_normal;
     world_normal.w = 0;
-
     return world_normal.normalize();
 }

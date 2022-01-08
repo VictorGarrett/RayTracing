@@ -15,10 +15,15 @@ struct sortIntersect {
 };
 
 std::list<Intersection* > World::intersect(Ray* r) {
+
     std::list<Intersection* > intersections;
 
-    for(auto const& obj : this->objects)
-        intersections.merge(obj->intersect(r));
+    for(auto const& obj : this->objects){
+        std::list<Intersection* > obj_its =  obj->intersect(r);
+        for(auto const& obj : obj_its){
+            intersections.push_back(obj);
+        }        
+    }
 
     intersections.sort(sortIntersect());
     return intersections;

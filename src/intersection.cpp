@@ -1,4 +1,5 @@
 #include "intersection.h"
+#include <iostream>
 
 Intersection::Intersection() {}
 
@@ -19,10 +20,13 @@ struct sortIntersect {
 };
 
 Intersection* hit(std::list<Intersection* > intList) {
-    intList.sort(sortIntersect());
 
+    intList.sort(sortIntersect());
     for(auto const& intersection : intList)
-        if(intersection->t >= 0) return intersection;
+        if(intersection->t >= 0) {
+            return intersection;
+        }
     
+
     return nullptr;
 }

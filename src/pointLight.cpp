@@ -59,12 +59,13 @@ Color shade_hit(const World& world, const Computations& comps) {
 
 Color color_at(World& world, Ray *r) {
     std::list <Intersection* > xs = world.intersect(r);
-    
+
     // If the ray misses all objects
     if(xs.size() == 0)
         return Color(0, 0, 0);
     
-    Computations comps = Computations(hit(xs), r);
-
+    Intersection* hitted = hit(xs);
+    if(hitted == NULL) return Color(0, 0, 0);
+    Computations comps = Computations(hitted, r);
     return shade_hit(world, comps);
 }

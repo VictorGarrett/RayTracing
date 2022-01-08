@@ -37,10 +37,14 @@ Ray* Camera::ray_for_pixel(const unsigned int px, const unsigned int py) {
     
 
     // canvas is always a unit square centered at z=-1
-    float **inverse_transform = inverse(this->transform); 
-    Vec4 pixel_pos = inverse_transform*point(world_x,world_y, -1);
-    Vec4 origin = inverse_transform * point(0, 0, 0);
+    Vec4 pixel_pos = this->inverseTransform*point(world_x,world_y, -1);
+    Vec4 origin = this->inverseTransform * point(0, 0, 0);
     Vec4 direction = (pixel_pos - origin).normalize();
 
     return new Ray(origin, direction);
+}
+
+void Camera::set_transform(float **m){
+    this->transform = m;
+    this->inverseTransform = inverse(m); 
 }

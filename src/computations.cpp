@@ -9,7 +9,6 @@ Computations::Computations(Intersection *i, Ray *r) {
     this->normalv = this->object->normal_at(this->point);
     this->inside = dot(normalv, eyev) < 0 ? true : false;
     if(this->inside) this->normalv = -this->normalv;
-
 }
 
 Computations::~Computations(){
