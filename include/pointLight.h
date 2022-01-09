@@ -19,7 +19,8 @@ public:
 };
 
 Color lighting(
-    const Material& material,
+    Material& material,
+    float **transform,
     const PointLight& light,
     const Vec4& point,
     const Vec4& eyev,

@@ -1,4 +1,5 @@
 #include "ray.h"
+#include "mat.h"
 
 Ray::Ray() {}
 
@@ -14,7 +15,7 @@ const Vec4 Ray::get_position(const float t) const {
 }
 
 Ray* Ray::transform(float** m) {
-    Vec4 ori = m * this->origin;
     Vec4 dir = m * this->direction;
+    Vec4 ori = m * this->origin;
     return new Ray(ori, dir);
 }

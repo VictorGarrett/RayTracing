@@ -13,5 +13,5 @@ Computations::Computations(Intersection* i, Ray* r) {
 }
 
 Computations::~Computations() {
-    // this->object = nullptr;
+    this->object = nullptr;
 }

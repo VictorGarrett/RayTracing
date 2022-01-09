@@ -10,12 +10,12 @@ std::list<Intersection* > Sphere::intersect(Ray* r) {
     std::list <Intersection* > intList;
     Ray* r_transf = r->transform(this->inverseTransform);
     Vec4 sphere_to_ray = r_transf->origin - point(0, 0, 0);
-
     float a = dot(r_transf->direction, r_transf->direction);
     float b = 2 * dot(r_transf->direction, sphere_to_ray);
     float c = dot(sphere_to_ray, sphere_to_ray) - 1;
 
     float discriminant = b * b - 4 * a * c;
+
 
 
     if (discriminant >= 0) {

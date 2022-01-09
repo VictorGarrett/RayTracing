@@ -1,4 +1,5 @@
 #include "intersection.h"
+#include "shape.h"
 #include <iostream>
 
 Intersection::Intersection() {}
@@ -9,7 +10,7 @@ Intersection::Intersection(const float t, Shape* obj) {
 }
 
 Intersection::~Intersection() {
-    // this->object = nullptr;
+    this->object = nullptr;
 }
 
 // sort

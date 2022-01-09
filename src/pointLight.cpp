@@ -15,7 +15,8 @@ PointLight::~PointLight() {}
 
 
 Color lighting(
-    const Material& material,
+    Material& material,
+    float **transform,
     const PointLight& light,
     const Vec4& point,
     const Vec4& eyev,
@@ -23,7 +24,7 @@ Color lighting(
     const bool in_shadow
 )
 {
-    Color effective_color = material.color * light.intensity;
+    Color effective_color = material.get_color(point, transform) * light.intensity;
     Vec4 lightv = (light.position - point).normalize();
     Color ambient = effective_color * material.ambient;
 
@@ -62,6 +63,7 @@ Color shade_hit(World& world, Computations& comps) {
     const bool shadowed = is_shadowed(world, comps.over_point);
     return lighting(
         comps.object->material,
+        comps.object->inverseTransform,
         world.light,
         comps.point,
         comps.eyev,
