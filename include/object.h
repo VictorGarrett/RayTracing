@@ -25,6 +25,18 @@ class Object{
             return mat->getColor();
         }
 
+        inline float getSpecular(){
+            return mat->getSpecular();
+        }
+
+        inline float getDiffuse(){
+            return mat->getDiffuse();
+        }
+
+        inline float getShininess(){
+            return mat->getShininess();
+        }
+
 
 
 };

@@ -16,4 +16,9 @@ class Ray{
         inline const vec3f getDir() const{
             return dir;
         }
+
+        //returns a ray which is the reflection of this along a normal on a point 
+        inline Ray reflection(point origin, vec3f normal){ 
+            return Ray(origin, dir - 2*dot(dir, normal)*normal);
+        }
 };
