@@ -1,5 +1,7 @@
 #include "world.h"
 #include "plane.h"
+#include "computations.h"
+
 World::World() {}
 
 World::~World() {

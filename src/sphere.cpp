@@ -36,3 +36,10 @@ Vec4 Sphere::normal_at(const Vec4& p) const {
     return world_normal.normalize();
 
 }
+
+Sphere* glass_sphere() {
+    Sphere *s = new Sphere();
+    s->material.transparency = 1.0;
+    s->material.refractive_index = 1.5;
+    return s;
+}

@@ -2,7 +2,7 @@
 #include <iostream>
 
 // Utility
-void display_mat(float** m, int n);
+;void display_mat(float** m, int n);
 
 void display_mat(float m[4][4]);
 

@@ -11,11 +11,12 @@ Plane::~Plane() {
 
 std::list<Intersection* > Plane::intersect(Ray* r) {
     std::list<Intersection* > intersections;
-    float absoluto = r->direction.y > 0 ? r->direction.y : -r->direction.y;
+    Ray *r_transf = r->transform(this->inverseTransform); 
+    float absoluto = r_transf->direction.y > 0 ? r_transf->direction.y : -r_transf->direction.y;
     if (absoluto < 0.0001)
         return intersections;
 
-    float t = -r->origin.y / r->direction.y;
+    float t = -r_transf->origin.y / r_transf->direction.y;
 
     intersections.push_back(new Intersection(t, this));
     return intersections;

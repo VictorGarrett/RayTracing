@@ -7,6 +7,9 @@ Material::Material() {
     this->diffuse = DIFFUSE;
     this->specular = SPECULAR;
     this->shininess = SHININESS;
+    this->reflective = REFLECTIVE;
+    this->transparency = TRANSPARENCY;
+    this->refractive_index = REFRACTIVE_INDEX;
     this->pattern = NULL;
 }
 

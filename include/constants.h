@@ -5,8 +5,8 @@
 #define EPSILON 0.00001
 
 // Camera
-#define WIDTH 160
-#define HEIGHT 120
+#define WIDTH 320
+#define HEIGHT 240
 #define FIELD_OF_VIEW PI/2
 
 // Default Material
@@ -14,5 +14,9 @@
 #define DIFFUSE 0.9
 #define SPECULAR 0.9
 #define SHININESS 200.0
+#define REFLECTIVE 0.0
+#define TRANSPARENCY 0.0
+#define REFRACTIVE_INDEX 1.0
 
-
+// REFLECTIONS
+#define MAX_REFLECTIONS 4

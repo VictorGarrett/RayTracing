@@ -28,8 +28,14 @@ Color lighting(
     const bool in_shadow
 );
 
-Color shade_hit(World& world, Computations& comps);
+Color shade_hit(World& world, Computations& comps, int remaining);
 
 const bool is_shadowed(World& world, const Vec4& point);
 
-Color color_at(World& world, Ray* r);
+Color color_at(World& world, Ray* r, int remaining = 4);
+
+Color reflected_color(World& world, Computations comps, int remaining);
+
+Color refracted_color(World& world, Computations comps, int remaining);
+
+float schlick(Computations& comps);

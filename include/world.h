@@ -14,7 +14,6 @@ public:
     ~World();
 
     std::list<Intersection* > intersect(Ray* r);
-
 };
 
 World default_world();

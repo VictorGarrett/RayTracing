@@ -1,7 +1,7 @@
 #pragma once
 #include "color.h"
 #include "vec4.h"
-
+;
 class Pattern {
 public:
     Color a;

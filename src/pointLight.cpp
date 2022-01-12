@@ -56,12 +56,10 @@ Color lighting(
     return ambient + diffuse + specular;
 }
 
-Color shade_hit(World& world, Computations& comps) {
-    // moves the point a tiny in direction for avoid an object to
-    // cast a shadow on itself
-    comps.over_point = comps.point + comps.normalv * EPSILON;
+Color shade_hit(World& world, Computations& comps, int remaining) {
     const bool shadowed = is_shadowed(world, comps.over_point);
-    return lighting(
+
+    Color surface = lighting(
         comps.object->material,
         comps.object->inverseTransform,
         world.light,
@@ -70,6 +68,19 @@ Color shade_hit(World& world, Computations& comps) {
         comps.normalv,
         shadowed
     );
+
+    Color refracted = refracted_color(world, comps, remaining);
+
+    Color reflected = reflected_color(world, comps, remaining);
+
+    if(comps.object->material.reflective > 0 && comps.object->material.transparency > 0){
+        float reflectance = schlick(comps);
+        return surface + reflected * reflectance + refracted * (1 - reflectance);
+    }
+    else 
+        return surface + reflected + refracted;
+
+    return surface + reflected + refracted;
 }
 
 const bool is_shadowed(World& world, const Vec4& point) {
@@ -87,7 +98,7 @@ const bool is_shadowed(World& world, const Vec4& point) {
 
 }
 
-Color color_at(World& world, Ray* r) {
+Color color_at(World& world, Ray* r, int remaining) {
     std::list <Intersection* > xs = world.intersect(r);
 
     // If the ray misses all objects
@@ -96,6 +107,50 @@ Color color_at(World& world, Ray* r) {
 
     Intersection* hitted = hit(xs);
     if (hitted == NULL) return Color(0, 0, 0);
-    Computations comps = Computations(hitted, r);
-    return shade_hit(world, comps);
+    Computations comps = Computations(hitted, r, xs);
+    return shade_hit(world, comps, remaining);
+}
+
+Color reflected_color(World& world, Computations comps, int remaining) {
+    if(comps.object->material.reflective == 0 || remaining <= 0)
+        return BLACK;
+    
+    Ray *reflect_ray = new Ray(comps.over_point, comps.reflectv);
+    Color color = color_at(world, reflect_ray, remaining - 1);
+
+    return color * comps.object->material.reflective;
+}
+
+Color refracted_color(World& world, Computations comps, int remaining){
+    if(comps.object->material.transparency == 0 || remaining <= 0)
+        return BLACK;
+
+    float n_ratio = comps.n1 / comps.n2;
+    float cos_i = dot(comps.eyev, comps.normalv);
+    float sin2_t = (n_ratio * n_ratio)*(1 - cos_i*cos_i);
+    if(sin2_t > 1) return BLACK;
+
+    float cos_t = sqrt(1.0 - sin2_t);
+    Vec4 direction = comps.normalv * (n_ratio * cos_i - cos_t) - comps.eyev * n_ratio;
+    Ray *refract_ray = new Ray(comps.under_point, direction);
+    Color color = color_at(world, refract_ray, remaining -1) * comps.object->material.transparency;
+    return color;
+}
+
+float schlick(Computations& comps) {
+    float cos = dot(comps.eyev, comps.normalv);
+
+    if(comps.n1 > comps.n2){
+        float n = comps.n1 / comps.n2;
+        float sin2_t = (n*n)*(1 - cos*cos);
+        // total internal reflection
+        if(sin2_t > 1) return 1.0;
+
+        float cos_t = sqrt(1.0 - sin2_t);
+        cos = cos_t;
+    }
+    float r0 = pow((comps.n1 - comps.n2)/(comps.n1 + comps.n2), 2);
+    
+    float power =  pow(1-cos, 5);
+    return r0 + (1 - r0) * power;
 }
