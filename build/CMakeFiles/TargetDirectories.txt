@@ -1,0 +1,3 @@
+F:/Victor/RayTracingTeste/build/CMakeFiles/raytracer.dir
+F:/Victor/RayTracingTeste/build/CMakeFiles/edit_cache.dir
+F:/Victor/RayTracingTeste/build/CMakeFiles/rebuild_cache.dir
