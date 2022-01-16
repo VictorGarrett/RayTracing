@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "F:/Victor/RayTracingTeste/src/main.cpp" "CMakeFiles/raytracer.dir/src/main.cpp.obj" "gcc" "CMakeFiles/raytracer.dir/src/main.cpp.obj.d"
   "F:/Victor/RayTracingTeste/src/math/color.cpp" "CMakeFiles/raytracer.dir/src/math/color.cpp.obj" "gcc" "CMakeFiles/raytracer.dir/src/math/color.cpp.obj.d"
+  "F:/Victor/RayTracingTeste/src/math/random.cpp" "CMakeFiles/raytracer.dir/src/math/random.cpp.obj" "gcc" "CMakeFiles/raytracer.dir/src/math/random.cpp.obj.d"
   "F:/Victor/RayTracingTeste/src/math/ray.cpp" "CMakeFiles/raytracer.dir/src/math/ray.cpp.obj" "gcc" "CMakeFiles/raytracer.dir/src/math/ray.cpp.obj.d"
   "F:/Victor/RayTracingTeste/src/math/vec3f.cpp" "CMakeFiles/raytracer.dir/src/math/vec3f.cpp.obj" "gcc" "CMakeFiles/raytracer.dir/src/math/vec3f.cpp.obj.d"
   "F:/Victor/RayTracingTeste/src/objects/light.cpp" "CMakeFiles/raytracer.dir/src/objects/light.cpp.obj" "gcc" "CMakeFiles/raytracer.dir/src/objects/light.cpp.obj.d"

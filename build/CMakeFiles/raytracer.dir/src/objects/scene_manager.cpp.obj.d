@@ -61,6 +61,12 @@ CMakeFiles/raytracer.dir/src/objects/scene_manager.cpp.obj: \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/tr1/riemann_zeta.tcc \
  F:/Victor/RayTracingTeste/include/objects/material.h \
  F:/Victor/RayTracingTeste/include/math/color.h \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/stdio.h \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/_mingw_print_push.h \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/_mingw_print_pop.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/vector \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/allocator.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h \
@@ -103,12 +109,8 @@ CMakeFiles/raytracer.dir/src/objects/scene_manager.cpp.obj: \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/postypes.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cwchar \
  C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/wchar.h \
- C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/_mingw_print_push.h \
- C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h \
  C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/_mingw_stat64.h \
- C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
  C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
- C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/_mingw_print_pop.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cstdint \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/stdint.h \
  C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/stdint.h \
@@ -116,8 +118,6 @@ CMakeFiles/raytracer.dir/src/objects/scene_manager.cpp.obj: \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/clocale \
  C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/locale.h \
- C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/stdio.h \
- C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/iosfwd \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cctype \
  C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/ctype.h \

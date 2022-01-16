@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/raytracer.dir/src/main.cpp.obj.d"
   "CMakeFiles/raytracer.dir/src/math/color.cpp.obj"
   "CMakeFiles/raytracer.dir/src/math/color.cpp.obj.d"
+  "CMakeFiles/raytracer.dir/src/math/random.cpp.obj"
+  "CMakeFiles/raytracer.dir/src/math/random.cpp.obj.d"
   "CMakeFiles/raytracer.dir/src/math/ray.cpp.obj"
   "CMakeFiles/raytracer.dir/src/math/ray.cpp.obj.d"
   "CMakeFiles/raytracer.dir/src/math/vec3f.cpp.obj"

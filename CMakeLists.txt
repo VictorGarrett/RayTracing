@@ -8,6 +8,8 @@ file(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/*.cpp")
 
 add_executable(raytracer ${SOURCES})
 
+set(CMAKE_CXX_FLAGS "-O3")
+
 include_directories(include)
 
 set_target_properties(raytracer PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)

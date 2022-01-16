@@ -2,6 +2,7 @@
 
 #include "objects/primitives.h"
 #include "objects/material.h"
+#include <stdio.h>
 
 class Object{
 
@@ -13,11 +14,11 @@ class Object{
         Object(Primitive* shape = nullptr, Material* baseMaterial = nullptr);
         ~Object();
 
-        inline point intersectRay(Ray r){
+        inline point intersectRay(Ray& r){
             return shape->intersectRay(r);
         }
 
-        inline vec3f getNormal(point surfacePoint){
+        inline vec3f getNormal(point& surfacePoint){
             return shape->getNormal(surfacePoint);
         }
 
@@ -25,16 +26,8 @@ class Object{
             return mat->getColor();
         }
 
-        inline float getSpecular(){
-            return mat->getSpecular();
-        }
-
-        inline float getDiffuse(){
-            return mat->getDiffuse();
-        }
-
-        inline float getShininess(){
-            return mat->getShininess();
+        inline color getEmissiveColor(){
+            return mat->getEmissiveColor();
         }
 
 

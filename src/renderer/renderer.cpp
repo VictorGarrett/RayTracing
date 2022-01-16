@@ -1,5 +1,21 @@
 #include "renderer/renderer.h"
 #include "objects/scene.h"
+#include <stdlib.h>
+
+#define PI  3.141592654
+#define PI2 9.869604401
+#define SAMPLES 500
+
+
+Random* Renderer::rng = nullptr;
+Scene* Renderer::scene = nullptr;
+
+void Renderer::setRNG(Random* generator){
+    rng = generator;
+}
+void Renderer::setScene(Scene* renderScene){
+    scene = renderScene;
+}
 
 void Renderer::normalizeExposure(std::vector<color>& imageBuffer){
     float max = 0.0f;
@@ -18,7 +34,12 @@ void Renderer::normalizeExposure(std::vector<color>& imageBuffer){
     
 }
 
-void Renderer::renderToImage(unsigned char* imageData, int imageChannels, Scene* scene, const std::vector<LightSource*>& lights, const Camera& camera){
+void Renderer::renderToImage(unsigned char* imageData, int imageChannels, Scene* scene, const Camera& camera){
+
+    setScene(scene);
+
+    Random ram((uint64_t)imageData);
+    setRNG(&ram);
 
     int width = camera.getTargetWidth();
     int height = camera.getTargetHeight();
@@ -27,8 +48,9 @@ void Renderer::renderToImage(unsigned char* imageData, int imageChannels, Scene*
     //create image buffer
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j++){
-            imageBuffer.push_back(getSample(j, i, scene, lights, camera));
-        } 
+            imageBuffer.push_back(getPixel(j, i, camera));
+        }
+        printf("%.2f%\n", 100.0*i/height); 
     }
     //normalize exposure
     normalizeExposure(imageBuffer);
@@ -55,23 +77,28 @@ void Renderer::renderToImage(unsigned char* imageData, int imageChannels, Scene*
 
 }
 
-color Renderer::getSample(int x, int y, Scene* scene, const std::vector<LightSource*>& lights, const Camera& camera){
+color Renderer::getPixel(int x, int y, const Camera& camera){
 
     Ray cameraRay = camera.getRay(x, y);
-    return processRay(cameraRay, scene, lights, 0);
-    //return (processRay(camera.getRay(x, y), objects, lights, 0) + processRay(camera.getRay(x+1, y), objects, lights, 0) + processRay(camera.getRay(x, y+1), objects, lights, 0) + processRay(camera.getRay(x+1, y+1), objects, lights, 0))/4;
+    color pixelColor(0, 0, 0);
+
+    for(int i = 0; i < SAMPLES; i++){
+        pixelColor += processRay(cameraRay, 0);
+    }
+
+    return pixelColor/SAMPLES;
+
     
 }
 
-color Renderer::processRay(Ray r, Scene* scene, const std::vector<LightSource*>& lights, int rayDepth){
+color Renderer::processRay(Ray& r, int rayDepth){
 
-    if(rayDepth > MAX_RAY_DEPTH)
-        return color(0.05f, 0.05f, 0.05f);
+    if(rayDepth == MAX_RAY_DEPTH)
+        return {0.0f, 0.0f, 0.0f};
 
     point closestIntersection = r.getPoint(MAX_RAY_LENGTH);
-    Object* objectHit;
-    color pixelColor(0.0f, 0.0f, 0.0f);
-  
+    Object* objectHit = nullptr;
+
     for(unsigned int i = 0; i < scene->size(); i++){//find closest hit object          
         point intersection = (*scene)[i]->intersectRay(r);
 
@@ -83,34 +110,20 @@ color Renderer::processRay(Ray r, Scene* scene, const std::vector<LightSource*>&
         }
     }
 
-    if(closestIntersection == r.getPoint(MAX_RAY_LENGTH))//no hit detected
-        return color(0.05f, 0.05f, 0.05f);
+    if(!objectHit)//no hit detected
+        return {0.0f, 0.0f, 0.0f};
 
-    for(unsigned int j = 0; j < lights.size(); j++){//accumulate contribution of every light source
-        
-        bool inShadow = false;
-        Ray shadowRay(closestIntersection, lights[j]->getPosition() - closestIntersection);
-        
-        float costeta = dot(shadowRay.getDir(), objectHit->getNormal(closestIntersection));
+    const vec3f yl = objectHit->getNormal(closestIntersection);
+    const vec3f zl = cross(r.getDir(), yl).normalize();
+    const vec3f xl = cross(zl, yl).normalize();
+    float polar, azim; //spherical angles to integrate along
 
-        if(costeta > 0){//a light ray cannot hit a surface from behind     
-            for(unsigned int k = 0; k < scene->size(); k++){//check for obstruction in the light path
-                if((*scene)[k]->intersectRay(shadowRay) != point(0.0f, 0.0f, 0.0f) && 
-                  ((*scene)[k]->intersectRay(shadowRay)-closestIntersection).length2() < (lights[j]->getPosition() - closestIntersection).length2())
-                {
-                    inShadow = true;
-                    break;
-                }         
-            }
-            
-            if(!inShadow){
-                pixelColor += computeDiffuse(lights[j]->getColor(), objectHit->getColor(), costeta, objectHit->getDiffuse()); 
-                pixelColor += computeSpecular(r, shadowRay, objectHit, closestIntersection, lights[j]->getColor());
-            }
-        }   
-    }
-    //the reflection component is independent of light sources
-    pixelColor += objectHit->getSpecular()*processRay(r.reflection(closestIntersection, objectHit->getNormal(closestIntersection)), scene, lights, rayDepth+1);
-    
-    return pixelColor ;
+    polar = rng->dUnif()*PI/2;
+    azim = rng->dUnif()*2*PI;
+    float sinp = sin(polar);
+    vec3f dir = cos(polar)*yl + sinp*cos(azim)*xl + sinp*sin(azim)*zl;
+
+    Ray sampleRay(closestIntersection, dir);
+
+    return processRay(sampleRay, rayDepth+1)*(objectHit->getColor()/(2*PI2))*dot(sampleRay.getDir(), yl) + objectHit->getEmissiveColor();
 }

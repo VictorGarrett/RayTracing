@@ -103,6 +103,9 @@ CMakeFiles/raytracer.dir/src/main.cpp.obj: \
  F:/Victor/RayTracingTeste/include/math/color.h \
  F:/Victor/RayTracingTeste/include/renderer/camera.h \
  F:/Victor/RayTracingTeste/include/objects/light.h \
+ F:/Victor/RayTracingTeste/include/math/random.h \
+ C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/stdint.h \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/stdint.h \
  F:/Victor/RayTracingTeste/include/objects/scene_manager.h \
  F:/Victor/RayTracingTeste/include/objects/scene.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/unordered_map \
@@ -123,8 +126,6 @@ CMakeFiles/raytracer.dir/src/main.cpp.obj: \
  C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/_mingw_stat64.h \
  C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cstdint \
- C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/stdint.h \
- C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/stdint.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/localefwd.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/clocale \

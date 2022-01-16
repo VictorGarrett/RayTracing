@@ -13,7 +13,7 @@ class Ray{
         ~Ray();
 
         const point getPoint(float t) const;
-        inline const vec3f getDir() const{
+        inline vec3f getDir() const{
             return dir;
         }
 

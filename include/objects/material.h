@@ -4,25 +4,20 @@
 
 class Material{
 
-    color baseColor;//diffuse color
-    float specularCoef;
-    float diffuseCoef;
-    float shininess;
+    color baseColor;
+    color emissiveColor;
+
 
     public:
-        Material(color baseColor = {0.0f, 0.0f, 0.0f}, float specular = 0.0f, float diffuse = 0.0f, float shininess = 0.0f);
+        Material(color baseColor = {0.0f, 0.0f, 0.0f}, color emissiveColor = {0.0f, 0.0f, 0.0f});
         ~Material();
 
         inline color getColor() const{
             return baseColor;
         }
-        inline float getSpecular() const{
-            return specularCoef;
+
+        inline color getEmissiveColor() const{
+            return emissiveColor;
         }
-        inline float getDiffuse() const{
-            return diffuseCoef;
-        }
-        inline float getShininess() const{
-            return shininess;
-        }
+
 };

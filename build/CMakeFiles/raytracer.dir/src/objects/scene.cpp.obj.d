@@ -60,6 +60,12 @@ CMakeFiles/raytracer.dir/src/objects/scene.cpp.obj: \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/tr1/riemann_zeta.tcc \
  F:/Victor/RayTracingTeste/include/objects/material.h \
  F:/Victor/RayTracingTeste/include/math/color.h \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/stdio.h \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/_mingw_print_push.h \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+ C:/PROGRA~1/mingw64/x86_64-w64-mingw32/include/_mingw_print_pop.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/vector \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/allocator.h \
  C:/PROGRA~1/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h \

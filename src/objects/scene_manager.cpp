@@ -48,10 +48,12 @@ Scene* SceneManager::getScene(const char* path){
                                 i->second["material"]["color"][0].as<float>(), 
                                 i->second["material"]["color"][1].as<float>(),
                                 i->second["material"]["color"][2].as<float>()
-                               }, 
-                                i->second["material"]["specular"].as<float>(),
-                                i->second["material"]["diffuse"].as<float>(),
-                                i->second["material"]["shininess"].as<float>()
+                               },
+                               { 
+                                i->second["material"]["emissive"][0].as<float>(),
+                                i->second["material"]["emissive"][1].as<float>(),
+                                i->second["material"]["emissive"][2].as<float>()
+                               }
                               );
 
         Object* obj = objBuilder.getObject();

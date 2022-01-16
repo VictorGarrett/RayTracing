@@ -9,7 +9,7 @@ Primitive::~Primitive(){
 
 }
 
-void Primitive::move(vec3f delta){
+void Primitive::move(vec3f& delta){
     center += delta;
 }
 
@@ -26,7 +26,7 @@ Plane::~Plane(){
 
 }
 
-const vec3f Plane::intersectRay(Ray r) const{
+const vec3f Plane::intersectRay(Ray& r) const{
     if(dot(r.getDir(), normal)){
         float t = dot(center - r.getPoint(0), normal)/dot(r.getDir(), normal);
         
@@ -38,7 +38,7 @@ const vec3f Plane::intersectRay(Ray r) const{
     return {0.0f, 0.0f, 0.0f};
 }
 
-const vec3f Plane::getNormal(point surfacePoint) const{
+const vec3f Plane::getNormal(point& surfacePoint) const{
     return normal;
 }
 
@@ -51,7 +51,7 @@ Sphere::~Sphere(){
 
 }
 
-const vec3f Sphere::intersectRay(Ray r) const{
+const vec3f Sphere::intersectRay(Ray& r) const{
     //float a = r.getDir().length2(); =1
     float b = 2*dot(r.getPoint(0) - center, r.getDir());
     float c = (r.getPoint(0) - center).length2() - radius*radius;
@@ -74,7 +74,7 @@ const vec3f Sphere::intersectRay(Ray r) const{
 
 }
 
-const vec3f Sphere::getNormal(point surfacePoint) const{
+const vec3f Sphere::getNormal(point& surfacePoint) const{
     vec3f normal = (surfacePoint - center);
     normal.normalize();
     return normal;

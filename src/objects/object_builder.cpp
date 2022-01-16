@@ -26,11 +26,11 @@ void ObjectBuilder::setPrimitivePlane(point position, vec3f normal){
     objShape = new Plane(position, normal);
 }
 
-void ObjectBuilder::setMaterial(color matColor, float specular, float diffuse, float shininess){
+void ObjectBuilder::setMaterial(color matColor, color emiColor){
     if(objMaterial)
         delete objMaterial;
 
-    objMaterial = new Material(matColor, specular, diffuse, shininess);
+    objMaterial = new Material(matColor, emiColor);
 }
 
 Object* ObjectBuilder::getObject(){

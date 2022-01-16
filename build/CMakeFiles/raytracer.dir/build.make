@@ -98,11 +98,26 @@ CMakeFiles/raytracer.dir/src/math/color.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytracer.dir/src/math/color.cpp.s"
 	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\Victor\RayTracingTeste\src\math\color.cpp -o CMakeFiles\raytracer.dir\src\math\color.cpp.s
 
+CMakeFiles/raytracer.dir/src/math/random.cpp.obj: CMakeFiles/raytracer.dir/flags.make
+CMakeFiles/raytracer.dir/src/math/random.cpp.obj: CMakeFiles/raytracer.dir/includes_CXX.rsp
+CMakeFiles/raytracer.dir/src/math/random.cpp.obj: ../src/math/random.cpp
+CMakeFiles/raytracer.dir/src/math/random.cpp.obj: CMakeFiles/raytracer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/raytracer.dir/src/math/random.cpp.obj"
+	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytracer.dir/src/math/random.cpp.obj -MF CMakeFiles\raytracer.dir\src\math\random.cpp.obj.d -o CMakeFiles\raytracer.dir\src\math\random.cpp.obj -c F:\Victor\RayTracingTeste\src\math\random.cpp
+
+CMakeFiles/raytracer.dir/src/math/random.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytracer.dir/src/math/random.cpp.i"
+	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\Victor\RayTracingTeste\src\math\random.cpp > CMakeFiles\raytracer.dir\src\math\random.cpp.i
+
+CMakeFiles/raytracer.dir/src/math/random.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytracer.dir/src/math/random.cpp.s"
+	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\Victor\RayTracingTeste\src\math\random.cpp -o CMakeFiles\raytracer.dir\src\math\random.cpp.s
+
 CMakeFiles/raytracer.dir/src/math/ray.cpp.obj: CMakeFiles/raytracer.dir/flags.make
 CMakeFiles/raytracer.dir/src/math/ray.cpp.obj: CMakeFiles/raytracer.dir/includes_CXX.rsp
 CMakeFiles/raytracer.dir/src/math/ray.cpp.obj: ../src/math/ray.cpp
 CMakeFiles/raytracer.dir/src/math/ray.cpp.obj: CMakeFiles/raytracer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/raytracer.dir/src/math/ray.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/raytracer.dir/src/math/ray.cpp.obj"
 	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytracer.dir/src/math/ray.cpp.obj -MF CMakeFiles\raytracer.dir\src\math\ray.cpp.obj.d -o CMakeFiles\raytracer.dir\src\math\ray.cpp.obj -c F:\Victor\RayTracingTeste\src\math\ray.cpp
 
 CMakeFiles/raytracer.dir/src/math/ray.cpp.i: cmake_force
@@ -117,7 +132,7 @@ CMakeFiles/raytracer.dir/src/math/vec3f.cpp.obj: CMakeFiles/raytracer.dir/flags.
 CMakeFiles/raytracer.dir/src/math/vec3f.cpp.obj: CMakeFiles/raytracer.dir/includes_CXX.rsp
 CMakeFiles/raytracer.dir/src/math/vec3f.cpp.obj: ../src/math/vec3f.cpp
 CMakeFiles/raytracer.dir/src/math/vec3f.cpp.obj: CMakeFiles/raytracer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/raytracer.dir/src/math/vec3f.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/raytracer.dir/src/math/vec3f.cpp.obj"
 	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytracer.dir/src/math/vec3f.cpp.obj -MF CMakeFiles\raytracer.dir\src\math\vec3f.cpp.obj.d -o CMakeFiles\raytracer.dir\src\math\vec3f.cpp.obj -c F:\Victor\RayTracingTeste\src\math\vec3f.cpp
 
 CMakeFiles/raytracer.dir/src/math/vec3f.cpp.i: cmake_force
@@ -132,7 +147,7 @@ CMakeFiles/raytracer.dir/src/objects/light.cpp.obj: CMakeFiles/raytracer.dir/fla
 CMakeFiles/raytracer.dir/src/objects/light.cpp.obj: CMakeFiles/raytracer.dir/includes_CXX.rsp
 CMakeFiles/raytracer.dir/src/objects/light.cpp.obj: ../src/objects/light.cpp
 CMakeFiles/raytracer.dir/src/objects/light.cpp.obj: CMakeFiles/raytracer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/raytracer.dir/src/objects/light.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/raytracer.dir/src/objects/light.cpp.obj"
 	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytracer.dir/src/objects/light.cpp.obj -MF CMakeFiles\raytracer.dir\src\objects\light.cpp.obj.d -o CMakeFiles\raytracer.dir\src\objects\light.cpp.obj -c F:\Victor\RayTracingTeste\src\objects\light.cpp
 
 CMakeFiles/raytracer.dir/src/objects/light.cpp.i: cmake_force
@@ -147,7 +162,7 @@ CMakeFiles/raytracer.dir/src/objects/material.cpp.obj: CMakeFiles/raytracer.dir/
 CMakeFiles/raytracer.dir/src/objects/material.cpp.obj: CMakeFiles/raytracer.dir/includes_CXX.rsp
 CMakeFiles/raytracer.dir/src/objects/material.cpp.obj: ../src/objects/material.cpp
 CMakeFiles/raytracer.dir/src/objects/material.cpp.obj: CMakeFiles/raytracer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/raytracer.dir/src/objects/material.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/raytracer.dir/src/objects/material.cpp.obj"
 	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytracer.dir/src/objects/material.cpp.obj -MF CMakeFiles\raytracer.dir\src\objects\material.cpp.obj.d -o CMakeFiles\raytracer.dir\src\objects\material.cpp.obj -c F:\Victor\RayTracingTeste\src\objects\material.cpp
 
 CMakeFiles/raytracer.dir/src/objects/material.cpp.i: cmake_force
@@ -162,7 +177,7 @@ CMakeFiles/raytracer.dir/src/objects/object.cpp.obj: CMakeFiles/raytracer.dir/fl
 CMakeFiles/raytracer.dir/src/objects/object.cpp.obj: CMakeFiles/raytracer.dir/includes_CXX.rsp
 CMakeFiles/raytracer.dir/src/objects/object.cpp.obj: ../src/objects/object.cpp
 CMakeFiles/raytracer.dir/src/objects/object.cpp.obj: CMakeFiles/raytracer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/raytracer.dir/src/objects/object.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/raytracer.dir/src/objects/object.cpp.obj"
 	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytracer.dir/src/objects/object.cpp.obj -MF CMakeFiles\raytracer.dir\src\objects\object.cpp.obj.d -o CMakeFiles\raytracer.dir\src\objects\object.cpp.obj -c F:\Victor\RayTracingTeste\src\objects\object.cpp
 
 CMakeFiles/raytracer.dir/src/objects/object.cpp.i: cmake_force
@@ -177,7 +192,7 @@ CMakeFiles/raytracer.dir/src/objects/object_builder.cpp.obj: CMakeFiles/raytrace
 CMakeFiles/raytracer.dir/src/objects/object_builder.cpp.obj: CMakeFiles/raytracer.dir/includes_CXX.rsp
 CMakeFiles/raytracer.dir/src/objects/object_builder.cpp.obj: ../src/objects/object_builder.cpp
 CMakeFiles/raytracer.dir/src/objects/object_builder.cpp.obj: CMakeFiles/raytracer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/raytracer.dir/src/objects/object_builder.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/raytracer.dir/src/objects/object_builder.cpp.obj"
 	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytracer.dir/src/objects/object_builder.cpp.obj -MF CMakeFiles\raytracer.dir\src\objects\object_builder.cpp.obj.d -o CMakeFiles\raytracer.dir\src\objects\object_builder.cpp.obj -c F:\Victor\RayTracingTeste\src\objects\object_builder.cpp
 
 CMakeFiles/raytracer.dir/src/objects/object_builder.cpp.i: cmake_force
@@ -192,7 +207,7 @@ CMakeFiles/raytracer.dir/src/objects/primitives.cpp.obj: CMakeFiles/raytracer.di
 CMakeFiles/raytracer.dir/src/objects/primitives.cpp.obj: CMakeFiles/raytracer.dir/includes_CXX.rsp
 CMakeFiles/raytracer.dir/src/objects/primitives.cpp.obj: ../src/objects/primitives.cpp
 CMakeFiles/raytracer.dir/src/objects/primitives.cpp.obj: CMakeFiles/raytracer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/raytracer.dir/src/objects/primitives.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/raytracer.dir/src/objects/primitives.cpp.obj"
 	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytracer.dir/src/objects/primitives.cpp.obj -MF CMakeFiles\raytracer.dir\src\objects\primitives.cpp.obj.d -o CMakeFiles\raytracer.dir\src\objects\primitives.cpp.obj -c F:\Victor\RayTracingTeste\src\objects\primitives.cpp
 
 CMakeFiles/raytracer.dir/src/objects/primitives.cpp.i: cmake_force
@@ -207,7 +222,7 @@ CMakeFiles/raytracer.dir/src/objects/scene.cpp.obj: CMakeFiles/raytracer.dir/fla
 CMakeFiles/raytracer.dir/src/objects/scene.cpp.obj: CMakeFiles/raytracer.dir/includes_CXX.rsp
 CMakeFiles/raytracer.dir/src/objects/scene.cpp.obj: ../src/objects/scene.cpp
 CMakeFiles/raytracer.dir/src/objects/scene.cpp.obj: CMakeFiles/raytracer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/raytracer.dir/src/objects/scene.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/raytracer.dir/src/objects/scene.cpp.obj"
 	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytracer.dir/src/objects/scene.cpp.obj -MF CMakeFiles\raytracer.dir\src\objects\scene.cpp.obj.d -o CMakeFiles\raytracer.dir\src\objects\scene.cpp.obj -c F:\Victor\RayTracingTeste\src\objects\scene.cpp
 
 CMakeFiles/raytracer.dir/src/objects/scene.cpp.i: cmake_force
@@ -222,7 +237,7 @@ CMakeFiles/raytracer.dir/src/objects/scene_manager.cpp.obj: CMakeFiles/raytracer
 CMakeFiles/raytracer.dir/src/objects/scene_manager.cpp.obj: CMakeFiles/raytracer.dir/includes_CXX.rsp
 CMakeFiles/raytracer.dir/src/objects/scene_manager.cpp.obj: ../src/objects/scene_manager.cpp
 CMakeFiles/raytracer.dir/src/objects/scene_manager.cpp.obj: CMakeFiles/raytracer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/raytracer.dir/src/objects/scene_manager.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/raytracer.dir/src/objects/scene_manager.cpp.obj"
 	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytracer.dir/src/objects/scene_manager.cpp.obj -MF CMakeFiles\raytracer.dir\src\objects\scene_manager.cpp.obj.d -o CMakeFiles\raytracer.dir\src\objects\scene_manager.cpp.obj -c F:\Victor\RayTracingTeste\src\objects\scene_manager.cpp
 
 CMakeFiles/raytracer.dir/src/objects/scene_manager.cpp.i: cmake_force
@@ -237,7 +252,7 @@ CMakeFiles/raytracer.dir/src/renderer/camera.cpp.obj: CMakeFiles/raytracer.dir/f
 CMakeFiles/raytracer.dir/src/renderer/camera.cpp.obj: CMakeFiles/raytracer.dir/includes_CXX.rsp
 CMakeFiles/raytracer.dir/src/renderer/camera.cpp.obj: ../src/renderer/camera.cpp
 CMakeFiles/raytracer.dir/src/renderer/camera.cpp.obj: CMakeFiles/raytracer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/raytracer.dir/src/renderer/camera.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/raytracer.dir/src/renderer/camera.cpp.obj"
 	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytracer.dir/src/renderer/camera.cpp.obj -MF CMakeFiles\raytracer.dir\src\renderer\camera.cpp.obj.d -o CMakeFiles\raytracer.dir\src\renderer\camera.cpp.obj -c F:\Victor\RayTracingTeste\src\renderer\camera.cpp
 
 CMakeFiles/raytracer.dir/src/renderer/camera.cpp.i: cmake_force
@@ -252,7 +267,7 @@ CMakeFiles/raytracer.dir/src/renderer/renderer.cpp.obj: CMakeFiles/raytracer.dir
 CMakeFiles/raytracer.dir/src/renderer/renderer.cpp.obj: CMakeFiles/raytracer.dir/includes_CXX.rsp
 CMakeFiles/raytracer.dir/src/renderer/renderer.cpp.obj: ../src/renderer/renderer.cpp
 CMakeFiles/raytracer.dir/src/renderer/renderer.cpp.obj: CMakeFiles/raytracer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/raytracer.dir/src/renderer/renderer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/raytracer.dir/src/renderer/renderer.cpp.obj"
 	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytracer.dir/src/renderer/renderer.cpp.obj -MF CMakeFiles\raytracer.dir\src\renderer\renderer.cpp.obj.d -o CMakeFiles\raytracer.dir\src\renderer\renderer.cpp.obj -c F:\Victor\RayTracingTeste\src\renderer\renderer.cpp
 
 CMakeFiles/raytracer.dir/src/renderer/renderer.cpp.i: cmake_force
@@ -267,6 +282,7 @@ CMakeFiles/raytracer.dir/src/renderer/renderer.cpp.s: cmake_force
 raytracer_OBJECTS = \
 "CMakeFiles/raytracer.dir/src/main.cpp.obj" \
 "CMakeFiles/raytracer.dir/src/math/color.cpp.obj" \
+"CMakeFiles/raytracer.dir/src/math/random.cpp.obj" \
 "CMakeFiles/raytracer.dir/src/math/ray.cpp.obj" \
 "CMakeFiles/raytracer.dir/src/math/vec3f.cpp.obj" \
 "CMakeFiles/raytracer.dir/src/objects/light.cpp.obj" \
@@ -284,6 +300,7 @@ raytracer_EXTERNAL_OBJECTS =
 
 ../bin/raytracer.exe: CMakeFiles/raytracer.dir/src/main.cpp.obj
 ../bin/raytracer.exe: CMakeFiles/raytracer.dir/src/math/color.cpp.obj
+../bin/raytracer.exe: CMakeFiles/raytracer.dir/src/math/random.cpp.obj
 ../bin/raytracer.exe: CMakeFiles/raytracer.dir/src/math/ray.cpp.obj
 ../bin/raytracer.exe: CMakeFiles/raytracer.dir/src/math/vec3f.cpp.obj
 ../bin/raytracer.exe: CMakeFiles/raytracer.dir/src/objects/light.cpp.obj
@@ -300,7 +317,7 @@ raytracer_EXTERNAL_OBJECTS =
 ../bin/raytracer.exe: CMakeFiles/raytracer.dir/linklibs.rsp
 ../bin/raytracer.exe: CMakeFiles/raytracer.dir/objects1.rsp
 ../bin/raytracer.exe: CMakeFiles/raytracer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable ..\bin\raytracer.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=F:\Victor\RayTracingTeste\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable ..\bin\raytracer.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\raytracer.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

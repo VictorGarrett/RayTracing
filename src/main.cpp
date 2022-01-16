@@ -5,8 +5,8 @@
 #include "renderer/renderer.h"
 #include "objects/scene_manager.h"
 
-#define WIDTH   1366
-#define HEIGHT  768
+#define WIDTH   800
+#define HEIGHT  600
 
 
 int main(){
@@ -40,8 +40,9 @@ int main(){
     //lights.push_back(&blueLight);
     //lights.push_back(&greenLight);
 
-    Renderer::renderToImage(imagedata, 3, sm.getScene("./scenes/scene1.yaml"), lights, mainCamera);
+    Renderer::renderToImage(imagedata, 3, sm.getScene("./scenes/scene1.yaml"), mainCamera);
 
+    printf("rendered\n");
     stbi_write_png("./ray.png", WIDTH, HEIGHT, 3, imagedata, 3*WIDTH*sizeof(unsigned char));
     free(imagedata);
 

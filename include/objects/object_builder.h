@@ -13,7 +13,7 @@ class ObjectBuilder{
 
         void setPrimitiveSphere(point position, float radius);
         void setPrimitivePlane(point position, vec3f normal);
-        void setMaterial(color matColor, float specular, float diffuse, float shininess);
+        void setMaterial(color matColor, color emiColor);
 
         Object* getObject();
 };

@@ -16,10 +16,10 @@ class Primitive{
         Primitive(point center = {0.0f, 0.0f, 0.0f});
         virtual ~Primitive();
         
-        void move(vec3f delta);
+        void move(vec3f& delta);
 
-        virtual const vec3f intersectRay(Ray r) const = 0;
-        virtual const vec3f getNormal(point surfacePoint) const = 0;
+        virtual const vec3f intersectRay(Ray& r) const = 0;
+        virtual const vec3f getNormal(point& surfacePoint) const = 0;
 
         const vec3f getCenter() const;
 
@@ -34,8 +34,8 @@ class Plane: public Primitive{
         Plane(point center = {0.0f, 0.0f, 0.0f}, vec3f normal = {0.0f, 0.0f, 0.0f});
         virtual ~Plane();
 
-        virtual const vec3f intersectRay(Ray r) const override;
-        virtual const vec3f getNormal(point surfacePoint) const override;
+        virtual const vec3f intersectRay(Ray& r) const override;
+        virtual const vec3f getNormal(point& surfacePoint) const override;
 
 };
 
@@ -48,7 +48,7 @@ class Sphere: public Primitive{
         Sphere(point center = {0.0f, 0.0f, 0.0f}, float radius = 0.0f);
         virtual ~Sphere();
 
-        virtual const vec3f intersectRay(Ray r) const override;
-        virtual const vec3f getNormal(point surfacePoint) const override;
+        virtual const vec3f intersectRay(Ray& r) const override;
+        virtual const vec3f getNormal(point& surfacePoint) const override;
 
 };
