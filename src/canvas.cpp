@@ -16,9 +16,6 @@ Canvas::Canvas(const unsigned int w, const unsigned int h) {
 
 }
 Canvas::~Canvas() {
-    for(unsigned int i = 0; i < this->height; i++){
-        delete grid[i];
-    }
     delete grid;
 }
 

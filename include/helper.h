@@ -7,6 +7,7 @@
 #include "constants.h"
 #include <list>
 #include <cmath>
+#include <algorithm>
 
 class Vec4;
 

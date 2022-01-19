@@ -2,12 +2,12 @@
 
 // Math
 #define PI 3.1415926535898
-#define EPSILON 0.00001
+#define EPSILON 0.0001
 
 // Camera
 #define WIDTH 320
 #define HEIGHT 240
-#define FIELD_OF_VIEW PI/2
+#define FIELD_OF_VIEW PI / 2
 
 // Default Material
 #define AMBIENT 0.1
