@@ -4,10 +4,13 @@
 #include "cone.h"
 #include "cube.h"
 #include "cylinder.h"
+#include "group.h"
 #include "intersection.h"
+#include "objParser.h"
 #include "plane.h"
 #include "shape.h"
 #include "sphere.h"
+#include "triangle.h"
 #include "world.h"
 
 Canvas render(Camera &camera, World &world);
@@ -18,7 +21,6 @@ void render_cube_scene();
 
 int main() {
   render_cube_scene();
-
   return 0;
 }
 
@@ -26,6 +28,7 @@ Canvas render(Camera &camera, World &world) {
   Canvas image = Canvas(camera.hsize, camera.vsize);
 
   for (unsigned int y = 0; y < camera.vsize; y++) {
+    std::cout << (y * 100.0) / camera.vsize << '%' << '\n';
     for (unsigned int x = 0; x < camera.hsize; x++) {
       Ray *ray = camera.ray_for_pixel(x, y);
       Color color = color_at(world, ray, MAX_REFLECTIONS);
@@ -145,18 +148,19 @@ void render_cube_scene() {
   w.light = light_source;
 
   // CAMERA
-  Camera camera = Camera(800, 800, PI / 3);
-  Vec4 from = point(0, 1.5, -5);
-  Vec4 to = point(0, 1, 0);
+  Camera camera = Camera(640, 360, PI / 3);
+  Vec4 from = point(0, 3.5, -11);
+  Vec4 to = point(1, -0.3, 0);
   Vec4 up = vector(0, 1, 0);
   camera.set_transform(view_transform(from, to, up));
 
-  Cone *cone = new Cone();
-  cone->material.set_color(Color(0.8, 0.6, 1));
-  cone->maximum = 0.3;
-  cone->minimum = -0.7;
-  cone->closed = true;
-  w.objects.push_back(cone);
+  Vec4 p1 = point(0, 1, 0);
+  Vec4 p2 = point(-1, 0, 0);
+  Vec4 p3 = point(1, 0, 0);
+
+  ObjParser parser = ObjParser();
+  Group *g = parser.parse_obj_file("cow.obj");
+  w.objects.push_back(g);
 
   Canvas img = render(camera, w);
   canvas_to_ppm(img);
