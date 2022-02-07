@@ -6,8 +6,9 @@
 #include <stdio.h>
 #include "math/random.h"
 
-#define MAX_RAY_LENGTH 1000
+#define MAX_RAY_LENGTH 100000
 #define MAX_RAY_DEPTH  3
+#define SAMPLES 1500
 
 class Scene;
 

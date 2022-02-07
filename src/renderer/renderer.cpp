@@ -4,7 +4,6 @@
 
 #define PI  3.141592654
 #define PI2 9.869604401
-#define SAMPLES 500
 
 
 Random* Renderer::rng = nullptr;
@@ -116,14 +115,14 @@ color Renderer::processRay(Ray& r, int rayDepth){
     const vec3f yl = objectHit->getNormal(closestIntersection);
     const vec3f zl = cross(r.getDir(), yl).normalize();
     const vec3f xl = cross(zl, yl).normalize();
-    float polar, azim; //spherical angles to integrate along
 
-    polar = rng->dUnif()*PI/2;
-    azim = rng->dUnif()*2*PI;
-    float sinp = sin(polar);
+    float sinp = rng->dUnif();
+    float polar = asin(sinp);
+    float azim = rng->dUnif()*2*PI;
+    
     vec3f dir = cos(polar)*yl + sinp*cos(azim)*xl + sinp*sin(azim)*zl;
 
     Ray sampleRay(closestIntersection, dir);
 
-    return processRay(sampleRay, rayDepth+1)*(objectHit->getColor()/(2*PI2))*dot(sampleRay.getDir(), yl) + objectHit->getEmissiveColor();
+    return 2*PI*processRay(sampleRay, rayDepth+1)*sinp*objectHit->brdf(0, 0, 0, 0) + objectHit->getEmissiveColor();
 }

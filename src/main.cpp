@@ -5,8 +5,8 @@
 #include "renderer/renderer.h"
 #include "objects/scene_manager.h"
 
-#define WIDTH   800
-#define HEIGHT  600
+#define WIDTH   400
+#define HEIGHT  300
 
 
 int main(){

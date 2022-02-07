@@ -20,4 +20,6 @@ class Material{
             return emissiveColor;
         }
 
+        color brdf(float theta_i, float phi_i, float theta_r, float phi_r);
+
 };

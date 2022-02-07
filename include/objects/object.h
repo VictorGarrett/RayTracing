@@ -30,6 +30,8 @@ class Object{
             return mat->getEmissiveColor();
         }
 
-
+        inline color brdf(float theta_i, float phi_i, float theta_r, float phi_r){
+            return mat->brdf(theta_i, phi_i, theta_r, phi_r);
+        }
 
 };
