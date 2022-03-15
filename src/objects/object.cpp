@@ -1,7 +1,7 @@
 #include "objects/object.h"
 #include <stdio.h>
 
-Object::Object(Primitive* shape, Material* baseMaterial): shape(shape), mat(baseMaterial){
+Object::Object(Primitive* shape, Material* baseMaterial, bool isLightSource): shape(shape), mat(baseMaterial), isLightSource(isLightSource){
     if(!shape)
         printf("WARNING: object shape not set\n");
         

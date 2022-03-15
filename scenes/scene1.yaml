@@ -1,4 +1,13 @@
 ---
+  ground:
+    primitive:
+      type: "plane"
+      position: [0.0, -2.0, 0.0]
+      normal: [0.0, 1.0, 0.0]
+    material:
+      color: [0.1, 0.1, 0.6]
+      emissive: [0.0, 0.0, 0.0]
+    light: false
   ball1:
     primitive:
       type: "sphere"
@@ -7,6 +16,7 @@
     material:
       color: [0.3, 1.0, 0.3]
       emissive: [0.0, 0.0, 0.0]
+    light: false
 
   ball2:
     primitive:
@@ -16,25 +26,18 @@
     material:
       color: [1.0, 0.3, 0.3]
       emissive: [0.0, 0.0, 0.0]
+    light: false
 
   ball3:
     primitive:
       type: "sphere"
-      position: [-16.0, 2.0, 10.0]
+      position: [-30.0, 2.0, 10.0]
       radius: 1
     material:
       color: [0.1, 0.1, 0.9]
       emissive: [0.0, 0.0, 0.0]
-
-  ground:
-    primitive:
-      type: "plane"
-      position: [0.0, -2.0, 0.0]
-      normal: [0.0, 1.0, 0.0]
-    material:
-      color: [0.1, 0.1, 0.6]
-      emissive: [0.0, 0.0, 0.0]
-
+    light: false
+    
   sun:
     primitive:
       type: "sphere"
@@ -43,3 +46,4 @@
     material:
       color: [0.4, 0.4, 0.4]
       emissive: [10.0, 10.0, 10.0]
+    light: true

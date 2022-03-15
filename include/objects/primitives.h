@@ -22,6 +22,7 @@ class Primitive{
         virtual const vec3f getNormal(point& surfacePoint) const = 0;
 
         const vec3f getCenter() const;
+        virtual const float getSize() const = 0;
 
 };
 
@@ -36,6 +37,7 @@ class Plane: public Primitive{
 
         virtual const vec3f intersectRay(Ray& r) const override;
         virtual const vec3f getNormal(point& surfacePoint) const override;
+        virtual const float getSize() const override;
 
 };
 
@@ -50,5 +52,6 @@ class Sphere: public Primitive{
 
         virtual const vec3f intersectRay(Ray& r) const override;
         virtual const vec3f getNormal(point& surfacePoint) const override;
+        virtual const float getSize() const override;
 
 };

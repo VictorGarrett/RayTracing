@@ -111,18 +111,64 @@ color Renderer::processRay(Ray& r, int rayDepth){
 
     if(!objectHit)//no hit detected
         return {0.0f, 0.0f, 0.0f};
+    if(dot(r.getDir(), objectHit->getNormal(closestIntersection)) > 0)
+        return {0.0f, 0.0f, 0.0f};
+    if(objectHit->getIsLightSource())
+        return objectHit->getEmissiveColor();
 
-    const vec3f yl = objectHit->getNormal(closestIntersection);
-    const vec3f zl = cross(r.getDir(), yl).normalize();
-    const vec3f xl = cross(zl, yl).normalize();
+    auto lightList = scene->getLights();
+    float overallProb = 0;
 
-    float sinp = rng->dUnif();
-    float polar = asin(sinp);
-    float azim = rng->dUnif()*2*PI;
+    for(auto i = lightList.begin(); i != lightList.end(); i++)
+        //overallProb += 1/(1-cos(asin((*i)->getSize()/((*i)->getPosition()-closestIntersection).length())));
+        overallProb += (1-cos(asin((*i)->getSize()/((*i)->getPosition()-closestIntersection).length())));
+    overallProb *= 2*PI;
+    overallProb = 1/overallProb;
     
-    vec3f dir = cos(polar)*yl + sinp*cos(azim)*xl + sinp*sin(azim)*zl;
+    int selectedLight = rng->next()%lightList.size();
 
-    Ray sampleRay(closestIntersection, dir);
+    float maxAng = asin(scene->getLights()[selectedLight]->getSize()/(scene->getLights()[selectedLight]->getPosition()-closestIntersection).length());
 
-    return 2*PI*processRay(sampleRay, rayDepth+1)*sinp*objectHit->brdf(0, 0, 0, 0) + objectHit->getEmissiveColor();
+    if(rng->next()%2){
+
+        //printf("mat\n");
+        const vec3f yl = objectHit->getNormal(closestIntersection);
+        const vec3f zl = cross(r.getDir(), yl).normalize();
+        const vec3f xl = cross(zl, yl).normalize();
+        float sinp = rng->dUnif();
+        float polar = asin(sinp);
+        float azim = rng->dUnif()*2*PI;
+
+        vec3f dir = cos(polar)*yl + sinp*cos(azim)*xl + sinp*sin(azim)*zl;
+
+        Ray sampleRay(closestIntersection, dir); 
+        float prob = 0;
+        for(auto i = lightList.begin(); i != lightList.end(); i++){
+            vec3f lightDir = (*i)->getPosition()-closestIntersection;
+            if(acos(dot(dir, lightDir.normalize())) < maxAng) prob = overallProb;
+        }
+        return processRay(sampleRay, rayDepth+1)*sinp*objectHit->brdf(0, 0, 0, 0)*cos(polar)/(0.5*(cos(polar)/(2*PI))+0.5*prob) + objectHit->getEmissiveColor();
+    } 
+    else{
+
+        float maxAng = asin(scene->getLights()[selectedLight]->getSize()/(scene->getLights()[selectedLight]->getPosition()-closestIntersection).length());
+        //printf("lit\n");
+        const vec3f yl = (scene->getLights()[selectedLight]->getPosition()-closestIntersection)/(scene->getLights()[selectedLight]->getPosition()-closestIntersection).length();
+        const vec3f zl = cross(r.getDir(), yl).normalize();
+        const vec3f xl = cross(zl, yl).normalize();
+
+        
+        //printf("%f\n", maxAng);
+        float polar = rng->dUnif()*maxAng;
+        float azim = rng->dUnif()*2*PI;
+
+        float sinp = sin(polar);
+
+        vec3f dir = cos(polar)*yl + sinp*cos(azim)*xl + sinp*sin(azim)*zl;
+
+        Ray sampleRay(closestIntersection, dir);
+        //printf("%f\n", dot(dir, objectHit->getNormal(closestIntersection)));
+
+        return processRay(sampleRay, rayDepth+1)*sinp*dot(dir, objectHit->getNormal(closestIntersection))*objectHit->brdf(0, 0, 0, 0)/(0.5*(dot(dir, objectHit->getNormal(closestIntersection))/(2*PI))+0.5*(overallProb)) + objectHit->getEmissiveColor();
+    }
 }

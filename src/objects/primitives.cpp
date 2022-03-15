@@ -42,6 +42,9 @@ const vec3f Plane::getNormal(point& surfacePoint) const{
     return normal;
 }
 
+const float Plane::getSize() const{
+    return 0.0f;
+}
 
 Sphere::Sphere(point center, float radius): Primitive(center){
     this->radius = radius;
@@ -78,4 +81,8 @@ const vec3f Sphere::getNormal(point& surfacePoint) const{
     vec3f normal = (surfacePoint - center);
     normal.normalize();
     return normal;
+}
+
+const float Sphere::getSize() const{
+    return radius;
 }

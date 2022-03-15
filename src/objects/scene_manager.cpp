@@ -56,8 +56,13 @@ Scene* SceneManager::getScene(const char* path){
                                }
                               );
 
+        objBuilder.setLightSource(i->second["light"].as<bool>());
+
         Object* obj = objBuilder.getObject();
         newScene->addObject(obj);
+
+        if(i->second["light"].as<bool>())
+          newScene->addLight(obj);
     }
     loadedScenes.insert({path, newScene});
 

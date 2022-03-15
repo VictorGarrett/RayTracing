@@ -2,13 +2,12 @@
 
 #include "objects/object.h"
 #include "renderer/camera.h"
-#include "objects/light.h"
 #include <stdio.h>
 #include "math/random.h"
 
 #define MAX_RAY_LENGTH 100000
 #define MAX_RAY_DEPTH  3
-#define SAMPLES 1500
+#define SAMPLES 500
 
 class Scene;
 

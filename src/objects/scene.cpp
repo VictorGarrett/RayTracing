@@ -21,6 +21,18 @@ void Scene::removeObject(Object* obj){
         }
 }
 
+void Scene::addLight(Object* obj){
+    lights.push_back(obj);
+}
+
+void Scene::removeLight(Object* obj){
+    for(auto i = lights.begin(); i != lights.end(); i++)
+        if(*i == obj){
+            delete *i;
+            lights.erase(i);
+        }
+}
+
 Object* Scene::operator[](int i){
     return objects[i];
 }

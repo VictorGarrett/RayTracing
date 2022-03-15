@@ -33,10 +33,14 @@ void ObjectBuilder::setMaterial(color matColor, color emiColor){
     objMaterial = new Material(matColor, emiColor);
 }
 
+void ObjectBuilder::setLightSource(bool isLightSource){
+    this->isLightSource = isLightSource;
+}
+
 Object* ObjectBuilder::getObject(){
 
     if(objMaterial && objShape){
-        Object* obj = new Object(objShape, objMaterial);
+        Object* obj = new Object(objShape, objMaterial, isLightSource);
         objMaterial = nullptr;
         objShape = nullptr;
         return obj;
